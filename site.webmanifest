@@ -1,0 +1,21 @@
+{
+  "name": "Linhagro Agronegócios",
+  "short_name": "Linhagro",
+  "description": "Nutrição de Precisão para o Campo",
+  "icons": [
+    {
+      "src": "assets/imagens/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/imagens/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#2D5016",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}
