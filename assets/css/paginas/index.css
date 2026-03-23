@@ -1,44 +1,68 @@
 /**
- * INDEX - CSS FINAL (hero + typewriter + seções) - IMAGEM 1920x1080
+ * INDEX - CSS FINAL (hero slider + seções + whatsapp flutuante)
  */
 
 /* ==========================================
-   HEADER - ESCONDER AO ROLAR
+   HEADER - ESCONDER AO ROLAR + OVERLAY VERDE
    =========================================== */
 
 .site-header {
-  position: sticky;           /* se o header global já é fixed, pode deixar só fixed lá */
+  position: sticky;
   top: 0;
   z-index: 1000;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+  background: transparent;              /* transparente no topo */
+  border-bottom: 1px solid transparent;
 }
 
-/* escondido ao rolar para baixo */
+/* esconder ao rolar para baixo */
 .site-header.header-hidden {
   transform: translateY(-100%);
   box-shadow: none;
 }
 
+/* overlay VERDE ao passar do threshold de scroll (classe adicionada pelo JS) */
+.site-header.header-overlay {
+  background: #2D5016;
+  border-bottom-color: rgba(0, 0, 0, 0.35);
+  box-shadow: none;
+}
+
 /* ==========================================
-   HERO
+   HERO (SLIDER COM 3 BANNERS)
    =========================================== */
 
 .hero {
   position: relative;
-  min-height: 85vh;
+  /* era 85vh, aumentamos ~15% de área */
+  min-height: 100vh;
   overflow: hidden;
   background: #1a1a1a;
 }
 
 .hero-single {
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  min-height: 85vh;
+  /* acompanha aumento da hero */
+  min-height: 100vh;
   display: flex;
   align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s ease;
 }
 
-/* Imagem de fundo preenchendo o bloco inteiro */
+.hero-single.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* fundo */
 .hero-background {
   position: absolute;
   inset: 0;
@@ -49,27 +73,49 @@
   z-index: 0;
 }
 
-/* DESKTOP – use a imagem 1920x1080 aqui */
+/* DESKTOP – imagens 1920x1080 */
 .hero-bg-1 {
   background-image: url('../../imagens/hero/desktop/hero-slide-1.jpg');
   background-color: #0d5940;
 }
 
-/* TABLET – versão intermediária */
+.hero-bg-2 {
+  background-image: url('../../imagens/hero/desktop/hero-slide-2.jpg');
+  background-color: #0d5940;
+}
+
+.hero-bg-3 {
+  background-image: url('../../imagens/hero/desktop/hero-slide-3.jpg');
+  background-color: #0d5940;
+}
+
+/* TABLET */
 @media (max-width: 1024px) and (min-width: 769px) {
   .hero-bg-1 {
     background-image: url('../../imagens/hero/tablet/hero-slide-1.jpg');
   }
+  .hero-bg-2 {
+    background-image: url('../../imagens/hero/tablet/hero-slide-2.jpg');
+  }
+  .hero-bg-3 {
+    background-image: url('../../imagens/hero/tablet/hero-slide-3.jpg');
+  }
 }
 
-/* MOBILE – imagem menor */
+/* MOBILE */
 @media (max-width: 768px) {
   .hero-bg-1 {
     background-image: url('../../imagens/hero/mobile/hero-slide-1.jpg');
   }
+  .hero-bg-2 {
+    background-image: url('../../imagens/hero/mobile/hero-slide-2.jpg');
+  }
+  .hero-bg-3 {
+    background-image: url('../../imagens/hero/mobile/hero-slide-3.jpg');
+  }
 }
 
-/* SEM overlay escuro */
+/* sem overlay escuro estrutural – se precisar, crie só um overlay leve */
 .hero-overlay {
   display: none;
 }
@@ -85,19 +131,22 @@
 .hero-content {
   max-width: 730px;
   color: var(--cor-branco);
-  padding-top: 40px; /* margem para o header */
+  /* um pouco mais de respiro vertical */
+  padding-top: 40px;
 }
 
+/* badge SEM blur/sombra “embaçada” */
 .hero-badge {
   display: inline-block;
   padding: 6px 16px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.45);      /* leve fundo escuro */
+  /* removendo blur de vidro */
+  backdrop-filter: none;
   border-radius: 999px;
   font-size: 13px;
   font-weight: 600;
   margin-bottom: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .hero-title {
@@ -109,20 +158,19 @@
   color: var(--cor-branco);
 }
 
-/* texto em laranja dentro das frases */
 .hero-highlight-laranja {
-  background: linear-gradient(135deg, #F4A261 0%, #E8965A 100%);
+  background: linear-gradient(135deg, #FF5500 0%, #FF5500 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* cursor */
+/* cursor (se aparecer em algum lugar) */
 .hero-cursor {
   display: inline-block;
   margin-left: 4px;
   font-weight: 800;
-  background: linear-gradient(135deg, #F4A261 0%, #E8965A 100%);
+  background: linear-gradient(135deg, #FF5500 0%, #FF5500 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -163,14 +211,14 @@
 }
 
 .btn-hero-primary {
-  background: linear-gradient(135deg, #F4A261 0%, #E8965A 100%);
+  background: linear-gradient(135deg, #FF5500 0%, #FF5500 100%);
   color: var(--cor-branco);
-  box-shadow: 0 6px 20px rgba(244, 162, 97, 0.4);
+  box-shadow: 0 6px 20px rgba(255, 85, 0, 0.4);
 }
 
 .btn-hero-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(244, 162, 97, 0.5);
+  box-shadow: 0 10px 28px rgba(255, 85, 0, 0.5);
 }
 
 .btn-hero-secondary {
@@ -183,6 +231,34 @@
 .btn-hero-secondary:hover {
   background: rgba(255, 255, 255, 0.2);
   border-color: var(--cor-branco);
+}
+
+/* DOTS DO SLIDER */
+.hero-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+
+.hero-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-dot.active {
+  background: #FF5500;
+  border-color: #FF5500;
+  width: 24px;
 }
 
 /* ==========================================
@@ -219,7 +295,7 @@
   font-family: var(--fonte-titulos);
   font-size: 36px;
   font-weight: 800;
-  color: #F4A261;
+  color: #FF5500;
   margin-bottom: 4px;
 }
 
@@ -243,10 +319,10 @@
   padding: 6px 16px;
   background: linear-gradient(
     135deg,
-    rgba(244, 162, 97, 0.1) 0%,
-    rgba(244, 162, 97, 0.05) 100%
+    rgba(255, 85, 0, 0.1) 0%,
+    rgba(255, 85, 0, 0.05) 100%
   );
-  color: #F4A261;
+  color: #FF5500;
   border-radius: 999px;
   font-size: 13px;
   font-weight: 600;
@@ -294,7 +370,7 @@
 .destaque-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
-  border-color: #F4A261;
+  border-color: #FF5500;
 }
 
 .destaque-icon {
@@ -319,7 +395,7 @@
 }
 
 .destaque-icon-laranja {
-  background: linear-gradient(135deg, #F4A261 0%, #E8965A 100%);
+  background: linear-gradient(135deg, #FF5500 0%, #FF5500 100%);
 }
 
 .destaque-icon-azul {
@@ -345,7 +421,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #F4A261;
+  color: #FF5500;
   font-weight: 600;
   text-decoration: none;
   font-size: 14px;
@@ -384,7 +460,7 @@
 .area-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 10px 32px rgba(0, 0, 0, 0.1);
-  border-color: #F4A261;
+  border-color: #FF5500;
 }
 
 .area-icon {
@@ -404,8 +480,8 @@
 }
 
 .area-icon-laranja {
-  background: linear-gradient(135deg, rgba(244, 162, 97, 0.15) 0%, rgba(244, 162, 97, 0.05) 100%);
-  color: #F4A261;
+  background: linear-gradient(135deg, rgba(255, 85, 0, 0.15) 0%, rgba(255, 85, 0, 0.05) 100%);
+  color: #FF5500;
 }
 
 .area-icon-verde {
@@ -449,7 +525,7 @@
 }
 
 .area-arrow {
-  color: #F4A261;
+  color: #FF5500;
   font-size: 16px;
   transition: all 0.3s ease;
 }
@@ -459,7 +535,7 @@
 }
 
 /* ==========================================
-   PARCEIROS – CARROSSEL INFINITO COM IMAGENS
+   PARCEIROS – CARROSSEL INFINITO
    =========================================== */
 
 .parceiros {
@@ -484,14 +560,12 @@
   margin-top: 20px;
 }
 
-/* track com 3 sequências iguais de logos */
 .parceiros-track {
   display: flex;
   gap: 32px;
-  animation: scrollInfinito 30s linear infinite;
+  animation: scrollInfinito 20s linear infinite;
 }
 
-/* anima apenas 1/3 da largura, pois o conteúdo foi triplicado */
 @keyframes scrollInfinito {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-33.3333%); }
@@ -525,15 +599,15 @@
 }
 
 .parceiro-item:hover {
-  border-color: #F4A261;
+  border-color: #FF5500;
   transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(244, 162, 97, 0.2);
+  box-shadow: 0 6px 20px rgba(255, 85, 0, 0.2);
 }
 
 .parceiro-item:hover .parceiro-logo {
   filter: grayscale(0%);
   opacity: 1;
-  transform: translateY(-3px);
+  transform: scale(1.22) translateY(-3px);
 }
 
 /* ==========================================
@@ -542,7 +616,7 @@
 
 .cta-final {
   padding: 80px var(--espacamento-lg);
-  background: linear-gradient(135deg, #F4A261 0%, #E8965A 100%);
+  background: linear-gradient(135deg, #FF5500 0%, #FF5500 100%);
   color: var(--cor-branco);
 }
 
@@ -616,7 +690,39 @@
 
 .btn-cta-secondary:hover {
   background: var(--cor-branco);
-  color: #F4A261;
+  color: #FF5500;
+}
+
+/* ==========================================
+   BOTÃO WHATSAPP FLUTUANTE
+   =========================================== */
+
+.whatsapp-floating {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.whatsapp-floating a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #25D366;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  font-size: 28px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.whatsapp-floating a:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+  background-color: #1ebe5b;
 }
 
 /* ==========================================
@@ -624,6 +730,14 @@
    =========================================== */
 
 @media (max-width: 1024px) {
+  .hero {
+    min-height: 88vh;
+  }
+
+  .hero-single {
+    min-height: 88vh;
+  }
+
   .hero-title {
     font-size: 40px;
   }
@@ -635,11 +749,11 @@
 
 @media (max-width: 768px) {
   .hero {
-    min-height: 70vh;
+    min-height: 78vh;
   }
 
   .hero-single {
-    min-height: 70vh;
+    min-height: 78vh;
   }
 
   .hero-content {
@@ -712,6 +826,17 @@
   .parceiro-item {
     width: 130px;
     height: 75px;
+  }
+
+  .whatsapp-floating {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .whatsapp-floating a {
+    width: 52px;
+    height: 52px;
+    font-size: 26px;
   }
 }
 

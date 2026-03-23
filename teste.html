@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Solo Vivo Planta Forte</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .page {
+      width: 100%;
+      max-width: 1100px;
+      background: #020617;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.55);
+      display: grid;
+      grid-template-columns: 1.1fr 1fr; /* texto | imagem */
+      min-height: 520px;
+    }
+    .col-texto {
+      padding: 40px 40px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+    }
+    .logo-linha {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #9ca3af;
+    }
+    .logo-marca {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: 1px solid #22c55e33;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+      color: #bbf7d0;
+    }
+    h1 {
+      font-size: 32px;
+      line-height: 1.1;
+      color: #f9fafb;
+    }
+    .sub {
+      font-size: 14px;
+      color: #9ca3af;
+      max-width: 380px;
+    }
+    .bullet-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .chip {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #022c22;
+      color: #a7f3d0;
+      border: 1px solid #065f46;
+    }
+    .linha-resumo {
+      font-size: 13px;
+      color: #d1d5db;
+      max-width: 420px;
+    }
+    .linha-resumo strong {
+      color: #bbf7d0;
+      font-weight: 600;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .btn {
+      font-size: 13px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 0;
+      cursor: pointer;
+      font-weight: 500;
+      transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+    .btn-principal {
+      background: #22c55e;
+      color: #052e16;
+      box-shadow: 0 12px 30px rgba(34,197,94,0.35);
+    }
+    .btn-principal:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(34,197,94,0.45);
+    }
+    .btn-secundario {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid #4b5563;
+    }
+    .btn-secundario:hover {
+      background: #020617;
+    }
+    .nota {
+      font-size: 11px;
+      color: #6b7280;
+      margin-top: 6px;
+    }
+
+    .col-imagem {
+      position: relative;
+      background: radial-gradient(circle at top, #22c55e33, #020617);
+      overflow: hidden;
+    }
+    .overlay-gradiente {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, #22c55e33, transparent 60%),
+        radial-gradient(circle at 80% 80%, #22c55e22, transparent 60%);
+      pointer-events: none;
+    }
+    .tag-topo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: #022c22cc;
+      color: #bbf7d0;
+      border: 1px solid #059669;
+    }
+    .caixa-foto {
+      position: absolute;
+      inset: 80px 20px 20px 20px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: url("sua-imagem-principal.jpg") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .caixa-foto::after {
+      content: "FOTO / ARTE DO PROGRAMA SOLO VIVO PLANTA FORTE";
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+      text-align: center;
+      padding: 10px 26px;
+      background: #00000080;
+      border-radius: 999px;
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        grid-template-columns: 1fr;
+        max-width: 640px;
+      }
+      .col-imagem {
+        min-height: 260px;
+        order: -1;
+      }
+      .caixa-foto {
+        inset: 60px 16px 16px 16px;
+      }
+      .col-texto {
+        padding: 26px 20px 28px;
+      }
+      h1 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <!-- LADO TEXTO -->
+    <div class="col-texto">
+      <div>
+        <div class="logo-linha">
+          <div class="logo-marca">LG</div>
+          <span>Programa Solo Vivo Planta Forte</span>
+        </div>
+
+        <h1>Solo Vivo, Planta Forte.</h1>
+
+        <p class="sub">
+          Solução nutricional e fitossanitária baseada em agricultura regenerativa,
+          com biofertilizantes e controle biológico.
+        </p>
+
+        <div class="bullet-row">
+          <span class="chip">Biofertilizantes on-farm</span>
+          <span class="chip">Controle biológico</span>
+          <span class="chip">100% sustentável</span>
+          <span class="chip">Livre de químicos</span>
+        </div>
+      </div>
+
+      <p class="linha-resumo">
+        Programa que atua no solo e na planta por <strong>bioativação</strong> e
+        <strong>bioestimulação</strong>, entregando equilíbrio, vigor e alta produtividade
+        com custo menor que o manejo químico tradicional.
+      </p>
+
+      <div class="cta-row">
+        <button class="btn btn-principal">
+          Quero aplicar na minha lavoura
+        </button>
+        <button class="btn btn-secundario">
+          Ver resultados em campo
+        </button>
+      </div>
+
+      <p class="nota">
+        Lavouras saudáveis, alimentos seguros e um planeta mais equilibrado, com tecnologia on-farm 100% biológica.
+      </p>
+    </div>
+
+    <!-- LADO IMAGEM -->
+    <div class="col-imagem">
+      <div class="overlay-gradiente"></div>
+      <div class="tag-topo">Agricultura regenerativa</div>
+
+      <!-- Trocar o background da caixa-foto pela sua imagem real -->
+      <div class="caixa-foto"></div>
+    </div>
+  </div>
+
+</body>
+</html>

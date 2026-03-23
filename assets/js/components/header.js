@@ -1,45 +1,77 @@
 /**
- * HEADER - ESCONDER AO ROLAR (GLOBAL)
- * - Rolando para baixo: esconde
- * - Rolando para cima: mostra
- * Funciona mesmo se o header for carregado depois (components-loader).
+ * HEADER - FUNDO VERDE APÓS SCROLL + (opcional) esconder ao rolar
+ * Usa .header, .header-overlay e .header-hidden
  */
 
 (function () {
-  function initHideHeaderOnScroll() {
+  function initHeaderEffects() {
     const header = document.querySelector('.header');
+    const navMenu = document.querySelector('.nav-menu');
+    const mobileToggle = document.querySelector('.mobile-toggle');
+
     if (!header) {
       console.warn('⚠️ header.js: .header não encontrado');
       return;
     }
 
-    let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+    let lastScrollY = window.scrollY;
+    const overlayThreshold = 120; // px para ativar o fundo verde
 
-    window.addEventListener('scroll', () => {
-      const currentY = window.pageYOffset || document.documentElement.scrollTop;
+    function updateOverlay() {
+      const y = window.scrollY || window.pageYOffset;
 
-      // evita flicker em movimentos muito pequenos
-      if (Math.abs(currentY - lastScrollY) < 5) {
-        return;
-      }
-
-      if (currentY > lastScrollY) {
-        // rolando pra baixo: esconde
-        header.classList.add('header-hidden');
+      if (y >= overlayThreshold) {
+        header.classList.add('header-overlay');      // fundo verde
       } else {
-        // rolando pra cima: mostra
-        header.classList.remove('header-hidden');
+        header.classList.remove('header-overlay');   // volta transparente
+      }
+    }
+
+    function onScroll() {
+      const currentY = window.scrollY;
+
+      // (Opcional) esconder/mostrar header conforme direção
+      if (Math.abs(currentY - lastScrollY) >= 5) {
+        if (currentY > lastScrollY) {
+          header.classList.add('header-hidden');     // rolando pra baixo
+        } else {
+          header.classList.remove('header-hidden');  // rolando pra cima
+        }
+        lastScrollY = currentY;
       }
 
-      lastScrollY = currentY;
-    });
+      updateOverlay();
+    }
 
-    console.log('📌 header.js: hide/show header on scroll configurado');
+    // Estado inicial
+    updateOverlay();
+
+    window.addEventListener('scroll', onScroll);
+
+    // MENU MOBILE AQUI É OPCIONAL, JÁ TEM NO components-loader.js
+    // Mas se quiser manter, deixe só se não duplicar listeners
+    if (mobileToggle && navMenu) {
+      mobileToggle.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('active');
+        mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      navMenu.querySelectorAll('.nav-link').forEach((link) => {
+        link.addEventListener('click', () => {
+          if (navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    }
+
+    console.log('📌 header.js: fundo verde após scroll + mobile menu configurados');
   }
 
-  // tenta inicializar após load completo
-  window.addEventListener('load', initHideHeaderOnScroll);
+  // roda quando a página toda carrega (caso header já esteja no DOM)
+  window.addEventListener('load', initHeaderEffects);
 
-  // se você dispara um evento customizado depois de carregar o header, garante também aqui
-  document.addEventListener('componentsLoaded', initHideHeaderOnScroll);
+  // roda novamente quando o loader avisar que os componentes foram injetados
+  document.addEventListener('componentsLoaded', initHeaderEffects);
 })();

@@ -20,7 +20,7 @@ async function loadComponent(componentName, containerId) {
   }
   
   try {
-    // ✅ CORRIGIDO: Path correto para assets/components/
+    // Path para assets/components/
     const response = await fetch(`${basePath}assets/components/${componentName}.html`);
     
     if (!response.ok) {
@@ -64,13 +64,13 @@ async function loadComponent(componentName, containerId) {
     
     container.innerHTML = html;
     
-    // ✅ ADICIONAR: Dispara evento individual
+    // Evento individual por componente (ex: headerLoaded, footerLoaded)
     const event = new CustomEvent(`${componentName}Loaded`, { 
       detail: { componentName } 
     });
     document.dispatchEvent(event);
     
-    // Inicializa funcionalidades do header
+    // Inicializa funcionalidades específicas do header
     if (componentName === 'header') {
       setTimeout(() => {
         markActiveLink();
@@ -138,7 +138,7 @@ function initMobileMenu() {
   console.log('✅ Menu mobile inicializado');
 }
 
-// ✅ MODIFICADO: Usa Promise.all e dispara evento global
+// Usa Promise.all e dispara evento global quando TUDO estiver pronto
 function init() {
   console.log('🔄 Iniciando carregamento de componentes...');
   
@@ -146,12 +146,12 @@ function init() {
     loadComponent('header', 'header-container'),
     loadComponent('footer', 'footer-container')
   ]).then(() => {
-    // ✅ Dispara evento quando TODOS os componentes carregarem
+    // Evento global quando TODOS os componentes carregarem
     const event = new CustomEvent('componentsLoaded');
     document.dispatchEvent(event);
     console.log('✅ Todos os componentes carregados');
     
-    // ✅ REVELA O BODY (se estiver com visibility: hidden)
+    // Revela o body (se estiver com visibility: hidden)
     document.body.style.visibility = 'visible';
     document.body.style.opacity = '0';
     setTimeout(() => {

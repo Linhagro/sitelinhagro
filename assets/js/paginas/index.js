@@ -1,112 +1,82 @@
 /**
  * INDEX - JS FINAL
- * Typewriter frases + Counter + Scroll Reveal + Smooth Scroll
+ * Hero slider (3 banners) + Counter + Scroll Reveal + Smooth Scroll
  */
 
 document.addEventListener('componentsLoaded', () => {
-  console.log('✅ Página Index carregada (hero full-screen com typewriter de frases)');
+  console.log('✅ Página Index carregada (hero slider 3 banners)');
   initIndexPage();
 });
 
 function initIndexPage() {
-  initHeroTypewriter();
+  initHeroSlider();
   initCounterAnimation();
   initScrollReveal();
   initSmoothScroll();
 }
 
 /**
- * TYPEWRITER - FRASES COMPLETAS
+ * HERO SLIDER - 3 SLIDES
  */
-function initHeroTypewriter() {
-  const el = document.getElementById('hero-typewriter');
-  const cursor = document.querySelector('.hero-cursor');
-  if (!el || !cursor) return;
+function initHeroSlider() {
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
 
-  // Frases com span laranja na palavra-chave
-  const phrases = [
-    'Regeneramos o <span class="hero-highlight-laranja">solo</span>.',
-    'Multiplicamos <span class="hero-highlight-laranja">resultados</span>.',
-    'Agricultura <span class="hero-highlight-laranja">regenerativa</span> com inteligência técnica.',
-    'O futuro da <span class="hero-highlight-laranja">produtividade</span> começa no solo vivo.'
-  ];
+  if (!slides.length) return;
 
-  let phraseIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  const typingSpeed = 55;       // velocidade de digitação
-  const deletingSpeed = 40;     // velocidade de apagar
-  const pauseOnComplete = 2000; // 2s com frase completa
-  const pauseBetween = 400;     // pausa entre apagar e próxima
+  let currentIndex = 0;
+  const total = slides.length;
+  const intervalTime = 6000;
+  let intervalId = null;
 
-  function type() {
-    const currentPhrase = phrases[phraseIndex];
-    const plain = currentPhrase.replace(/<[^>]*>/g, ''); // texto sem tags
-
-    if (!isDeleting) {
-      // escrevendo
-      const visibleLength = charIndex;
-      const currentVisible = sliceHtmlByPlainLength(currentPhrase, visibleLength);
-      el.innerHTML = currentVisible;
-
-      if (charIndex < plain.length) {
-        charIndex++;
-        setTimeout(type, typingSpeed);
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      if (i === index) {
+        slide.classList.add('active');
       } else {
-        // frase completa – pausa
-        setTimeout(() => {
-          isDeleting = true;
-          setTimeout(type, deletingSpeed);
-        }, pauseOnComplete);
+        slide.classList.remove('active');
       }
-    } else {
-      // apagando
-      const visibleLength = charIndex;
-      const currentVisible = sliceHtmlByPlainLength(currentPhrase, visibleLength);
-      el.innerHTML = currentVisible;
+    });
 
-      if (charIndex > 0) {
-        charIndex--;
-        setTimeout(type, deletingSpeed);
+    dots.forEach((dot, i) => {
+      if (i === index) {
+        dot.classList.add('active');
       } else {
-        // terminou de apagar – próxima frase
-        isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        setTimeout(type, pauseBetween);
+        dot.classList.remove('active');
       }
+    });
+
+    currentIndex = index;
+  }
+
+  function nextSlide() {
+    const nextIndex = (currentIndex + 1) % total;
+    showSlide(nextIndex);
+  }
+
+  function startAutoPlay() {
+    stopAutoPlay();
+    intervalId = setInterval(nextSlide, intervalTime);
+  }
+
+  function stopAutoPlay() {
+    if (intervalId) {
+      clearInterval(intervalId);
+      intervalId = null;
     }
   }
 
-  /**
-   * Corta string com HTML com base no comprimento do texto plano (sem tags),
-   * preservando as tags.
-   */
-  function sliceHtmlByPlainLength(html, targetLength) {
-    let plainCount = 0;
-    let result = '';
-    let inTag = false;
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      showSlide(index);
+      startAutoPlay();
+    });
+  });
 
-    for (let i = 0; i < html.length; i++) {
-      const char = html[i];
-      result += char;
+  showSlide(0);
+  startAutoPlay();
 
-      if (char === '<') {
-        inTag = true;
-      } else if (char === '>') {
-        inTag = false;
-      } else if (!inTag) {
-        plainCount++;
-        if (plainCount >= targetLength) {
-          return result;
-        }
-      }
-    }
-    return result;
-  }
-
-  // inicia após pequeno delay
-  setTimeout(type, 700);
-  console.log('⌨️ Typewriter de frases iniciado');
+  console.log('🎞️ Hero slider iniciado (3 slides)');
 }
 
 /**
@@ -220,4 +190,4 @@ function initSmoothScroll() {
   console.log('🧷 Smooth Scroll configurado');
 }
 
-console.log('🚀 Index JS (hero full-screen + typewriter) carregado!');
+console.log('🚀 Index JS (hero slider 3 banners) carregado!');

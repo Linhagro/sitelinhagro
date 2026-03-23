@@ -78,7 +78,7 @@
   <!-- CSS da Página -->
   <link rel="stylesheet" href="assets/css/paginas/index.css">
 
-  <!-- Google Analytics GA4 com Consent Mode v2 -->
+  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -99,7 +99,7 @@
     });
   </script>
 
-  <!-- JSON-LD simplificado -->
+  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -139,39 +139,100 @@
   <!-- HEADER -->
   <div id="header-container"></div>
 
-  <!-- HERO -->
+  <!-- HERO SLIDER (3 BANNERS) -->
   <section class="hero">
-    <div class="hero-single">
+    <!-- SLIDE 1 -->
+    <div class="hero-single hero-slide active" data-slide="1">
       <div class="hero-background hero-bg-1"></div>
       <div class="hero-overlay"></div>
       <div class="container">
         <div class="hero-content">
 
           <div class="hero-badge">
-            Desde 1998 regenerando solos e construindo para produtividade sustentável.
+            Desde 1998 regenerando solos e construindo produtividade sustentável.
           </div>
 
           <h1 class="hero-title">
-            <span id="hero-typewriter"></span><span class="hero-cursor">|</span>
+            Regeneramos o <span class="hero-highlight-laranja">solo vivo</span>.
           </h1>
 
           <p class="hero-subtitle">
-            Soluções biológicas e nutrição inteligente para produtores que querem produzir mais,
-            preservando o solo e construindo resultado no longo prazo.
+            Soluções biológicas para construir fertilidade de base e preparar o solo para muitos ciclos produtivos.
           </p>
 
           <div class="hero-buttons">
-            <a href="paginas/destaques.html" class="btn-hero btn-hero-primary">
-              <span>Conheça nossas soluções regenerativas</span>
-            </a>
-            <a href="paginas/consultores.html" class="btn-hero btn-hero-secondary">
-              <i class="fas fa-user-tie"></i>
-              <span>Fale com um consultor</span>
+            <a href="" class="btn-hero btn-hero-primary">
+              <span>Ver soluções para solo</span>
             </a>
           </div>
 
         </div>
       </div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="hero-single hero-slide" data-slide="2">
+      <div class="hero-background hero-bg-2"></div>
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-content">
+
+          <div class="hero-badge">
+            Nutrição inteligente guiada por diagnóstico técnico.
+          </div>
+
+          <h1 class="hero-title">
+            Multiplicamos <span class="hero-highlight-laranja">resultados</span> com estratégia.
+          </h1>
+
+          <p class="hero-subtitle">
+            Planos nutricionais construídos com base em análise de solo, histórico da área e metas de produtividade.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="" class="btn-hero btn-hero-primary">
+              <span>Ver nutrição biológica</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="hero-single hero-slide" data-slide="3">
+      <div class="hero-background hero-bg-3"></div>
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-content">
+
+          <div class="hero-badge">
+            Acompanhamento consultivo próximo do produtor.
+          </div>
+
+          <h1 class="hero-title">
+            Agricultura <span class="hero-highlight-laranja">regenerativa</span> com inteligência técnica.
+          </h1>
+
+          <p class="hero-subtitle">
+            Time técnico ao seu lado para ajustar o manejo conforme a lavoura evolui e o mercado exige.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="" class="btn-hero btn-hero-primary">
+              <span>Conhecer metodologia completa</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- DOTS -->
+    <div class="hero-dots">
+      <button class="hero-dot active" data-target="1"></button>
+      <button class="hero-dot" data-target="2"></button>
+      <button class="hero-dot" data-target="3"></button>
     </div>
   </section>
 
@@ -224,7 +285,6 @@
 
       <div class="destaques-grid">
 
-        <!-- Pilar 1 -->
         <div class="destaque-card">
           <div class="destaque-icon destaque-icon-verde">
             <i class="fas fa-microscope"></i>
@@ -236,7 +296,6 @@
           </p>
         </div>
 
-        <!-- Pilar 2 -->
         <div class="destaque-card">
           <div class="destaque-icon destaque-icon-laranja">
             <i class="fas fa-seedling"></i>
@@ -248,7 +307,6 @@
           </p>
         </div>
 
-        <!-- Pilar 3 -->
         <div class="destaque-card">
           <div class="destaque-icon destaque-icon-azul">
             <i class="fas fa-user-tie"></i>
@@ -372,7 +430,6 @@
 
     <div class="parceiros-carousel">
       <div class="parceiros-track">
-        <!-- sequência base -->
         <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros1.jpg" alt="Parceiro 1" class="parceiro-logo"></div>
         <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros2.jpg" alt="Parceiro 2" class="parceiro-logo"></div>
         <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros3.jpg" alt="Parceiro 3" class="parceiro-logo"></div>
@@ -380,8 +437,9 @@
         <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros5.jpg" alt="Parceiro 5" class="parceiro-logo"></div>
         <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros6.jpg" alt="Parceiro 6" class="parceiro-logo"></div>
         <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros7.jpg" alt="Parceiro 7" class="parceiro-logo"></div>
+        <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros8.jpg" alt="Parceiro 8" class="parceiro-logo"></div>
+        <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros9.jpg" alt="Parceiro 9" class="parceiro-logo"></div>
 
-        <!-- sequência 2 -->
         <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros1.jpg" alt="Parceiro 1" class="parceiro-logo"></div>
         <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros2.jpg" alt="Parceiro 2" class="parceiro-logo"></div>
         <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros3.jpg" alt="Parceiro 3" class="parceiro-logo"></div>
@@ -389,8 +447,9 @@
         <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros5.jpg" alt="Parceiro 5" class="parceiro-logo"></div>
         <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros6.jpg" alt="Parceiro 6" class="parceiro-logo"></div>
         <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros7.jpg" alt="Parceiro 7" class="parceiro-logo"></div>
+        <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros8.jpg" alt="Parceiro 8" class="parceiro-logo"></div>
+        <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros9.jpg" alt="Parceiro 9" class="parceiro-logo"></div>
 
-        <!-- sequência 3 -->
         <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros1.jpg" alt="Parceiro 1" class="parceiro-logo"></div>
         <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros2.jpg" alt="Parceiro 2" class="parceiro-logo"></div>
         <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros3.jpg" alt="Parceiro 3" class="parceiro-logo"></div>
@@ -398,6 +457,8 @@
         <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros5.jpg" alt="Parceiro 5" class="parceiro-logo"></div>
         <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros6.jpg" alt="Parceiro 6" class="parceiro-logo"></div>
         <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros7.jpg" alt="Parceiro 7" class="parceiro-logo"></div>
+        <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros8.jpg" alt="Parceiro 8" class="parceiro-logo"></div>
+        <div class="parceiro-item"><img src="assets/imagens/hero/parceiros/parceiros9.jpg" alt="Parceiro 9" class="parceiro-logo"></div>
       </div>
     </div>
   </section>
@@ -419,13 +480,6 @@
         </p>
 
         <div class="cta-buttons">
-          <a href="https://wa.me/5527996514725?text=Olá!%20Gostaria%20de%20conversar%20com%20o%20time%20Linhagro%20sobre%20estratégias%20regenerativas%20para%20minha%20lavoura."
-             class="btn-cta btn-cta-whatsapp"
-             target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-whatsapp"></i>
-            <span>Falar no WhatsApp</span>
-          </a>
-
           <a href="paginas/consultores.html"
              class="btn-cta btn-cta-secondary">
             <i class="fas fa-calendar-check"></i>
@@ -436,6 +490,13 @@
     </div>
   </section>
 
+  <!-- BOTÃO WHATSAPP FLUTUANTE -->
+  <div class="whatsapp-floating">
+    <a href="https://wa.me/5527996514725?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20com%20o%20time%20Linhagro%20sobre%20estrat%C3%A9gias%20regenerativas%20para%20minha%20lavoura." target="_blank" rel="noopener noreferrer" aria-label="Falar com a Linhagro no WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+
   <!-- FOOTER -->
   <div id="footer-container"></div>
 
@@ -444,10 +505,9 @@
 
   <!-- SCRIPTS -->
   <script src="assets/components-loader.js"></script>
-  <script src="assets/js/header.js"></script>
+  <script src="assets/js/components/header.js"></script>
   <script src="assets/js/paginas/index.js"></script>
 
-  <!-- Cookie banner loader -->
   <script>
     async function loadCookieBanner() {
       try {
