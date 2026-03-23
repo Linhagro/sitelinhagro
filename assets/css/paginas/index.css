@@ -2,6 +2,7 @@
  * INDEX - CSS FINAL (hero slider + seções + whatsapp flutuante)
  */
 
+
 /* ==========================================
    HEADER - ESCONDER AO ROLAR + OVERLAY VERDE
    =========================================== */
@@ -15,7 +16,7 @@
     border-color 0.3s ease,
     box-shadow 0.3s ease,
     transform 0.3s ease;
-  background: transparent;              /* transparente no topo */
+  background: transparent;
   border-bottom: 1px solid transparent;
 }
 
@@ -32,13 +33,13 @@
   box-shadow: none;
 }
 
+
 /* ==========================================
    HERO (SLIDER COM 3 BANNERS)
    =========================================== */
 
 .hero {
   position: relative;
-  /* era 85vh, aumentamos ~15% de área */
   min-height: 100vh;
   overflow: hidden;
   background: #1a1a1a;
@@ -48,7 +49,6 @@
   position: absolute;
   inset: 0;
   width: 100%;
-  /* acompanha aumento da hero */
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -131,7 +131,6 @@
 .hero-content {
   max-width: 730px;
   color: var(--cor-branco);
-  /* um pouco mais de respiro vertical */
   padding-top: 40px;
 }
 
@@ -139,8 +138,7 @@
 .hero-badge {
   display: inline-block;
   padding: 6px 16px;
-  background: rgba(0, 0, 0, 0.45);      /* leve fundo escuro */
-  /* removendo blur de vidro */
+  background: rgba(0, 0, 0, 0.45);
   backdrop-filter: none;
   border-radius: 999px;
   font-size: 13px;
@@ -261,23 +259,44 @@
   width: 24px;
 }
 
+
 /* ==========================================
-   NÚMEROS RÁPIDOS
+   NÚMEROS RÁPIDOS – TEXTO EM DEGRADÊ
    =========================================== */
 
 .numeros-rapidos {
-  padding: 40px var(--espacamento-lg) 60px;
   background: var(--cor-branco);
   border-bottom: 1px solid var(--cor-border);
+  padding-bottom: 60px;
 }
 
-.section-header-numeros {
+/* container sem fundo laranja */
+.faixa-resultados {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 26px 16px;
   text-align: center;
-  margin-bottom: 32px;
+  background: transparent;
 }
 
-.section-title-numeros {
-  font-size: 24px;
+/* texto com degradê laranja */
+.faixa-resultados-titulo {
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: var(--fonte-titulos);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.3;
+  background: linear-gradient(90deg, #ff9a3c 0%, #ff5500 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* conteúdo numérico abaixo, dentro do container padrão */
+.numeros-rapidos .container {
+  padding-top: 32px;
 }
 
 .numeros-grid {
@@ -304,6 +323,7 @@
   color: var(--cor-cinza-escuro);
   font-weight: 500;
 }
+
 
 /* ==========================================
    SEÇÕES GERAIS
@@ -344,13 +364,25 @@
   margin: 0 auto;
 }
 
+
 /* ==========================================
-   DESTAQUES / PILARES
+   DESTAQUES / PILARES – FUNDO LARANJA
    =========================================== */
 
 .destaques {
   padding: 80px var(--espacamento-lg);
-  background: var(--cor-claro);
+  background: linear-gradient(90deg, #ff9a3c 0%, #ff5500 100%);
+}
+
+/* textos da Metodologia em branco sobre o laranja */
+.destaques .section-title,
+.destaques .section-subtitle {
+  color: #ffffff;
+}
+
+.destaques .section-tag {
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.18);
 }
 
 .destaques-grid {
@@ -360,7 +392,7 @@
 }
 
 .destaque-card {
-  background: var(--cor-branco);
+  background: #ffffff;
   padding: 32px;
   border-radius: 16px;
   border: 2px solid transparent;
@@ -406,7 +438,7 @@
   font-family: var(--fonte-titulos);
   font-size: 20px;
   font-weight: 700;
-  color: var(--cor-escuro);
+  color: #1f3b2b;
   margin-bottom: 12px;
 }
 
@@ -417,23 +449,33 @@
   font-size: 15px;
 }
 
+/* botão/link Fale com um consultor em verde */
 .destaque-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #FF5500;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #4caf50;
+  color: #ffffff;
   font-weight: 600;
   text-decoration: none;
   font-size: 14px;
   transition: all 0.3s ease;
 }
 
-.destaque-link:hover {
-  gap: 10px;
+.destaque-link i {
+  font-size: 14px;
 }
 
+.destaque-link:hover {
+  gap: 10px;
+  background: #43a047;
+}
+
+
 /* ==========================================
-   ECOSSISTEMA / EXPLORE ÁREAS
+   ECOSSISTEMA / EXPLORE ÁREAS – CARDS LARANJA
    =========================================== */
 
 .explore-areas {
@@ -441,28 +483,49 @@
   background: var(--cor-branco);
 }
 
+/* título e subtítulo com destaque em laranja */
+.explore-areas .section-tag {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 85, 0, 0.15) 0%,
+    rgba(255, 85, 0, 0.05) 100%
+  );
+  color: #FF5500;
+}
+
+.explore-areas .section-title {
+  color: #1f3b2b;
+}
+
+.explore-areas .section-subtitle {
+  color: var(--cor-cinza-escuro);
+}
+
+/* grid de cards */
 .areas-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
 }
 
+/* cards com fundo laranja em degradê */
 .area-card {
-  background: var(--cor-branco);
-  border: 1px solid var(--cor-border);
+  background: linear-gradient(135deg, #ff9a3c 0%, #ff5500 100%);
+  border: none;
   border-radius: 16px;
   padding: 28px;
   text-decoration: none;
   transition: all 0.3s ease;
   display: block;
+  color: #ffffff;
 }
 
 .area-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.1);
-  border-color: #FF5500;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.2);
 }
 
+/* ícones sobre o card laranja */
 .area-icon {
   width: 56px;
   height: 56px;
@@ -473,59 +536,42 @@
   font-size: 24px;
   margin-bottom: 16px;
   transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.12);
+  color: #ffffff;
 }
 
 .area-card:hover .area-icon {
   transform: scale(1.1);
 }
 
-.area-icon-laranja {
-  background: linear-gradient(135deg, rgba(255, 85, 0, 0.15) 0%, rgba(255, 85, 0, 0.05) 100%);
-  color: #FF5500;
-}
-
-.area-icon-verde {
-  background: linear-gradient(135deg, rgba(76, 175, 80, 0.15) 0%, rgba(76, 175, 80, 0.05) 100%);
-  color: #4CAF50;
-}
-
-.area-icon-azul {
-  background: linear-gradient(135deg, rgba(33, 150, 243, 0.15) 0%, rgba(33, 150, 243, 0.05) 100%);
-  color: #2196F3;
-}
-
-.area-icon-roxo {
-  background: linear-gradient(135deg, rgba(156, 39, 176, 0.15) 0%, rgba(156, 39, 176, 0.05) 100%);
-  color: #9C27B0;
-}
-
-.area-icon-indigo {
-  background: linear-gradient(135deg, rgba(63, 81, 181, 0.15) 0%, rgba(63, 81, 181, 0.05) 100%);
-  color: #3F51B5;
-}
-
+/* classes de cor mantidas, mas com mesmo estilo base */
+.area-icon-laranja,
+.area-icon-verde,
+.area-icon-azul,
+.area-icon-roxo,
+.area-icon-indigo,
 .area-icon-vermelho {
-  background: linear-gradient(135deg, rgba(244, 67, 54, 0.15) 0%, rgba(244, 67, 54, 0.05) 100%);
-  color: #F44336;
+  background: rgba(0, 0, 0, 0.12);
+  color: #ffffff;
 }
 
 .area-title {
   font-family: var(--fonte-titulos);
   font-size: 18px;
   font-weight: 700;
-  color: var(--cor-escuro);
+  color: #ffffff;
   margin-bottom: 8px;
 }
 
 .area-descricao {
   font-size: 14px;
-  color: var(--cor-cinza-escuro);
+  color: #fff7ec;
   line-height: 1.5;
   margin-bottom: 12px;
 }
 
 .area-arrow {
-  color: #FF5500;
+  color: #ffffff;
   font-size: 16px;
   transition: all 0.3s ease;
 }
@@ -533,6 +579,7 @@
 .area-card:hover .area-arrow {
   transform: translateX(5px);
 }
+
 
 /* ==========================================
    PARCEIROS – CARROSSEL INFINITO
@@ -610,88 +657,6 @@
   transform: scale(1.22) translateY(-3px);
 }
 
-/* ==========================================
-   CTA FINAL
-   =========================================== */
-
-.cta-final {
-  padding: 80px var(--espacamento-lg);
-  background: linear-gradient(135deg, #FF5500 0%, #FF5500 100%);
-  color: var(--cor-branco);
-}
-
-.cta-content {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.cta-icon {
-  font-size: 56px;
-  margin-bottom: 24px;
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-.cta-title {
-  font-family: var(--fonte-titulos);
-  font-size: 40px;
-  font-weight: 800;
-  margin-bottom: 16px;
-  line-height: 1.2;
-}
-
-.cta-subtitle {
-  font-size: 18px;
-  margin-bottom: 32px;
-  opacity: 0.95;
-}
-
-.cta-buttons {
-  display: flex;
-  gap: 14px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.btn-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 28px;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 15px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-}
-
-.btn-cta-whatsapp {
-  background: var(--cor-branco);
-  color: #25D366;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.btn-cta-whatsapp:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
-}
-
-.btn-cta-secondary {
-  background: transparent;
-  color: var(--cor-branco);
-  border-color: var(--cor-branco);
-}
-
-.btn-cta-secondary:hover {
-  background: var(--cor-branco);
-  color: #FF5500;
-}
 
 /* ==========================================
    BOTÃO WHATSAPP FLUTUANTE
@@ -724,6 +689,7 @@
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
   background-color: #1ebe5b;
 }
+
 
 /* ==========================================
    RESPONSIVIDADE
@@ -785,6 +751,14 @@
     justify-content: center;
   }
 
+  .faixa-resultados {
+    padding: 20px 12px;
+  }
+
+  .faixa-resultados-titulo {
+    font-size: 20px;
+  }
+
   .numeros-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
@@ -799,8 +773,7 @@
   }
 
   .destaques,
-  .explore-areas,
-  .cta-final {
+  .explore-areas {
     padding: 60px var(--espacamento-lg);
   }
 
@@ -808,19 +781,6 @@
   .areas-grid {
     grid-template-columns: 1fr;
     gap: 20px;
-  }
-
-  .cta-title {
-    font-size: 28px;
-  }
-
-  .cta-buttons {
-    flex-direction: column;
-  }
-
-  .btn-cta {
-    width: 100%;
-    justify-content: center;
   }
 
   .parceiro-item {
