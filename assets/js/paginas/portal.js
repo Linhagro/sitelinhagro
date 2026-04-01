@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initPortal() {
   marcarNavAtivo();
-  renderizarConteudosDestaque();  // apenas OnFirm e Solo Vivo
+  renderizarConteudosDestaque();
+  setupBuscaProgramas();
   setupNewsletter();
   initFloatingWhatsappMessage();
   console.log('✅ Portal carregado!');
@@ -35,15 +36,16 @@ function marcarNavAtivo() {
 
 const conteudosDestaque = [
   {
-    id: 'onfirm',
-    titulo: 'OnFirm',
+    id: 'on-farm',
+    titulo: 'On-Farm',
     descricao:
       'Projeto focado em gestão e estabilidade da produção, unindo tecnologia, diagnóstico e acompanhamento técnico contínuo.',
     tag: 'Projeto Especial',
     data: '2026',
     autor: 'Time Linhagro',
     icone: 'fa-seedling',
-    link: 'onfirme.html' // destino do botão Saiba mais
+    link: 'on-farm.html',
+    slide: '2'
   },
   {
     id: 'solo-vivo',
@@ -54,7 +56,8 @@ const conteudosDestaque = [
     data: '2026',
     autor: 'Equipe Técnica',
     icone: 'fa-leaf',
-    link: 'solo-vivo-planta-forte.html' // destino do botão Saiba mais
+    link: 'solo-vivo-planta-forte.html',
+    slide: '3'
   }
 ];
 
@@ -68,9 +71,16 @@ function renderizarConteudosDestaque() {
       c => `
     <article class="conteudo-card" id="${c.id}">
       <div class="conteudo-imagem">
-        <div class="conteudo-imagem-placeholder">
-          <i class="fas ${c.icone}"></i>
-        </div>
+        <picture>
+          <source srcset="../assets/imagens/hero/mobile/hero-slide-${c.slide}.jpg" media="(max-width: 767px)">
+          <source srcset="../assets/imagens/hero/tablet/hero-slide-${c.slide}.jpg" media="(max-width: 1199px)">
+          <img
+            class="conteudo-imagem-img"
+            src="../assets/imagens/hero/desktop/hero-slide-${c.slide}.jpg"
+            alt="${c.titulo}"
+            loading="lazy"
+          />
+        </picture>
         <span class="conteudo-categoria categoria-destaque">
           ${c.tag}
         </span>
@@ -113,6 +123,39 @@ function animarCards() {
       card.style.opacity = '1';
       card.style.transform = 'translateY(0)';
     }, index * 100);
+  });
+}
+
+// Busca de programas
+function setupBuscaProgramas() {
+  const input = document.getElementById('busca-programas');
+  const grid = document.getElementById('conteudo-grid');
+  const msgSem = document.getElementById('sem-programas');
+  if (!input || !grid) return;
+
+  input.addEventListener('input', () => {
+    const termo = input.value.toLowerCase().trim();
+    const cards = grid.querySelectorAll('.conteudo-card');
+    let visiveis = 0;
+
+    cards.forEach(card => {
+      const titulo = card.querySelector('.conteudo-titulo')?.textContent.toLowerCase() || '';
+      const desc = card.querySelector('.conteudo-descricao')?.textContent.toLowerCase() || '';
+      const texto = `${titulo} ${desc}`;
+
+      if (!termo || texto.includes(termo)) {
+        card.style.display = 'flex';
+        visiveis++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    if (visiveis === 0) {
+      msgSem.style.display = 'block';
+    } else {
+      msgSem.style.display = 'none';
+    }
   });
 }
 
@@ -180,7 +223,7 @@ function initFloatingWhatsappMessage() {
 
   const mensagens = [
     'Fale com um consultor<br>especialista Linhagro',
-    'Quer tirar dúvidas sobre<br>OnFirm ou Solo Vivo?',
+    'Quer tirar dúvidas sobre<br>On-Farm ou Solo Vivo?',
     'Clique aqui e<br>fale pelo WhatsApp',
     'Nosso time técnico<br>está online agora'
   ];

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portal do Cliente Linhagro - Projetos especiais como OnFirm e Solo Vivo, Planta Forte.">
+  <meta name="description" content="Portal do Cliente Linhagro - Projetos especiais como On-Farm e Solo Vivo, Planta Forte.">
 
   <title>Portal do Cliente - Linhagro</title>
 
@@ -54,7 +54,7 @@
         <div class="section-header center">
           <h2 class="section-title">Projetos em Destaque</h2>
           <p class="section-subtitle">
-            Conheça o OnFirm e o Solo Vivo, Planta Forte.
+            Conheça o On-Farm e o Solo Vivo, Planta Forte.
           </p>
         </div>
 
@@ -70,81 +70,7 @@
           </div>
         </div>
 
-        <div class="conteudo-grid" id="conteudo-grid">
-
-          <!-- CARD ONFIRM -->
-          <article class="conteudo-card" data-programa="onfirm">
-            <div class="conteudo-imagem">
-              <img
-                class="conteudo-imagem-img"
-                src="../assets/imagens/portal/programas/onfirm.png"
-                alt="Programa OnFirm"
-                loading="lazy"
-              />
-              <span class="conteudo-categoria categoria-destaque">
-                Projeto Especial
-              </span>
-              <span class="conteudo-data">
-                <i class="far fa-calendar"></i>
-                2026
-              </span>
-            </div>
-            <div class="conteudo-corpo">
-              <h3 class="conteudo-titulo">OnFirm</h3>
-              <p class="conteudo-descricao">
-                Projeto focado em gestão e estabilidade da produção, unindo tecnologia,
-                diagnóstico e acompanhamento técnico contínuo ao longo da safra.
-              </p>
-              <div class="conteudo-rodape">
-                <div class="conteudo-autor">
-                  <div class="autor-avatar">T</div>
-                  <span>Time Linhagro</span>
-                </div>
-                <a href="onfirme.html" class="conteudo-btn">
-                  Saiba mais
-                  <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- CARD SOLO VIVO, PLANTA FORTE -->
-          <article class="conteudo-card" data-programa="solo-vivo">
-            <div class="conteudo-imagem">
-              <img
-                class="conteudo-imagem-img"
-                src="../assets/imagens/portal/programas/solovivo.png"
-                alt="Programa Solo Vivo, Planta Forte"
-                loading="lazy"
-              />
-              <span class="conteudo-categoria categoria-destaque">
-                Programa Solo
-              </span>
-              <span class="conteudo-data">
-                <i class="far fa-calendar"></i>
-                2026
-              </span>
-            </div>
-            <div class="conteudo-corpo">
-              <h3 class="conteudo-titulo">Solo Vivo, Planta Forte</h3>
-              <p class="conteudo-descricao">
-                Programa voltado para construção de solo vivo, manejo regenerativo
-                e plantas mais equilibradas e produtivas, safra após safra.
-              </p>
-              <div class="conteudo-rodape">
-                <div class="conteudo-autor">
-                  <div class="autor-avatar">E</div>
-                  <span>Equipe Técnica</span>
-                </div>
-                <a href="solo-vivo-planta-forte.html" class="conteudo-btn">
-                  Saiba mais
-                  <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-        </div>
+        <div class="conteudo-grid" id="conteudo-grid"></div>
 
         <!-- mensagem quando não encontrar nada -->
         <div class="sem-programas" id="sem-programas" style="display:none;">
@@ -228,89 +154,7 @@
   <!-- SCRIPTS -->
   <script src="../assets/components-loader.js"></script>
   <script src="../assets/js/components/header.js"></script>
-
-  <script>
-    // Marca nav ativo
-    function marcarNavAtivo() {
-      const navLinks = document.querySelectorAll('.nav-link');
-      navLinks.forEach(link => {
-        if (link.classList.contains('btn-portal')) {
-          link.classList.add('active');
-        }
-      });
-    }
-
-    // Busca de programas
-    function setupBuscaProgramas() {
-      const input = document.getElementById('busca-programas');
-      const grid = document.getElementById('conteudo-grid');
-      const msgSem = document.getElementById('sem-programas');
-      if (!input || !grid) return;
-
-      input.addEventListener('input', () => {
-        const termo = input.value.toLowerCase().trim();
-        const cards = grid.querySelectorAll('.conteudo-card');
-        let visiveis = 0;
-
-        cards.forEach(card => {
-          const titulo = card.querySelector('.conteudo-titulo')?.textContent.toLowerCase() || '';
-          const desc = card.querySelector('.conteudo-descricao')?.textContent.toLowerCase() || '';
-          const texto = `${titulo} ${desc}`;
-
-          if (!termo || texto.includes(termo)) {
-            card.style.display = 'flex';
-            visiveis++;
-          } else {
-            card.style.display = 'none';
-          }
-        });
-
-        if (visiveis === 0) {
-          msgSem.style.display = 'block';
-        } else {
-          msgSem.style.display = 'none';
-        }
-      });
-    }
-
-    // WhatsApp floating message
-    function initFloatingWhatsappMessage() {
-      const messageEl = document.querySelector('.whatsapp-floating-message');
-      if (!messageEl) return;
-
-      const mensagens = [
-        'Fale com um consultor<br>especialista Linhagro',
-        'Quer tirar dúvidas sobre<br>OnFirm ou Solo Vivo?',
-        'Clique aqui e<br>fale pelo WhatsApp',
-        'Nosso time técnico<br>está online agora'
-      ];
-
-      let idx = 0;
-
-      function mostrarMensagem() {
-        const span = messageEl.querySelector('span');
-        if (!span) return;
-
-        span.innerHTML = mensagens[idx];
-        messageEl.classList.add('visible');
-
-        setTimeout(() => {
-          messageEl.classList.remove('visible');
-        }, 2500);
-
-        idx = (idx + 1) % mensagens.length;
-      }
-
-      setTimeout(mostrarMensagem, 3000);
-      setInterval(mostrarMensagem, 6000);
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      marcarNavAtivo();
-      setupBuscaProgramas();
-      initFloatingWhatsappMessage();
-    });
-  </script>
+  <script src="../assets/js/paginas/portal.js"></script>
 
   <!-- Carregar Cookie Banner -->
   <script>

@@ -1,5 +1,3 @@
-// Página Solo Vivo, Planta Forte
-
 document.addEventListener('componentsLoaded', () => {
   marcarNavSoloVivo();
   initFloatingWhatsappMessageSolo();

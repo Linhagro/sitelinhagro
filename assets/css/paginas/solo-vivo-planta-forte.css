@@ -1,5 +1,3 @@
-/* ========= BASE ========= */
-
 .solo-page {
   background: #f8f9fa;
   min-height: 100vh;
@@ -7,8 +5,6 @@
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   position: relative;
 }
-
-/* ========= FOLHAS GENÉRICAS ========= */
 
 .folha {
   position: absolute;
@@ -103,33 +99,43 @@
   opacity: 0.2;
 }
 
-/* ========= HERO ========= */
-
 .solo-hero {
   position: relative;
-  min-height: 420px;
-  padding: 0;
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  min-height: auto;
+  display: block;
   overflow: hidden;
-
-  background-image: url("../../imagens/solo vivo/logo-solo-vivo-planta-forte.png");
-  background-size: contain;
-  background-position: center top;
-  background-repeat: no-repeat;
+  background-color: #f3f4f6;
 }
 
-.solo-hero-overlay {
+.solo-hero-picture {
+  display: block;
+  width: 100%;
+}
+
+.solo-hero-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: top center;
+}
+
+.solo-hero::before {
+  content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.15) 0%,
-    rgba(0, 0, 0, 0.2) 40%,
-    rgba(0, 0, 0, 0.25) 100%
+    rgba(0, 0, 0, 0.22) 0%,
+    rgba(0, 0, 0, 0.10) 35%,
+    rgba(0, 0, 0, 0.0) 80%
   );
   pointer-events: none;
+  z-index: 1;
 }
-
-/* ========= CONTAINERS – todos alinhados igual ========= */
 
 .solo-summary .container,
 .solo-pillars .container,
@@ -139,8 +145,6 @@
   margin: 0 auto;
   padding: 0 1.5rem;
 }
-
-/* ========= RESUMO ========= */
 
 .solo-summary {
   padding: 3rem 0;
@@ -176,8 +180,6 @@
   line-height: 1.7;
   color: #374151;
 }
-
-/* ========= PILARES ========= */
 
 .solo-pillars {
   padding: 3rem 0 4rem;
@@ -251,8 +253,6 @@
   line-height: 1.6;
 }
 
-/* ========= BENEFÍCIOS ========= */
-
 .solo-benefits {
   padding: 4rem 0;
   background: #f3f4f6;
@@ -260,7 +260,7 @@
 
 .solo-benefits-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr; /* esquerda maior, direita menor */
+  grid-template-columns: 1.4fr 1fr;
   gap: 3rem;
   align-items: start;
 }
@@ -310,14 +310,14 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  max-width: 100%; /* deixa usar toda a coluna */
+  max-width: 100%;
 }
 
 .solo-highlight-card {
   background: linear-gradient(135deg, #111827 0%, #1f2937 60%, #4b5563 100%);
   color: #f9fafb;
   border-radius: 16px;
-  padding: 2.5rem 1.75rem; /* mais padding vertical para crescer */
+  padding: 2.5rem 1.75rem;
   box-shadow: 0 16px 40px rgba(15, 23, 42, 0.7);
   display: flex;
   flex-direction: column;
@@ -326,20 +326,18 @@
 
 .solo-highlight-title {
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.15rem;      /* um pouco menor para caber menos por linha */
+  font-size: 1.15rem;
   font-weight: 800;
   line-height: 1.3;
   margin-bottom: 0.25rem;
 }
 
 .solo-highlight-text {
-  font-size: 0.92rem;      /* menor para forçar mais quebras */
-  line-height: 1.75;       /* mais espaçado verticalmente */
+  font-size: 0.92rem;
+  line-height: 1.75;
   opacity: 0.96;
   margin-bottom: 0;
 }
-
-/* ========= CTA FINAL ========= */
 
 .cta-section {
   padding: 4rem 0;
@@ -369,8 +367,6 @@
   flex-wrap: wrap;
   margin-top: 1.8rem;
 }
-
-/* ========= WHATSAPP FLUTUANTE ========= */
 
 .whatsapp-floating {
   position: fixed;
@@ -434,9 +430,7 @@
   pointer-events: auto;
 }
 
-/* ========= RESPONSIVO ========= */
-
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .solo-pillars-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -450,9 +444,14 @@
 }
 
 @media (max-width: 768px) {
+  .solo-page {
+    padding-top: 72px;
+  }
+
   .solo-hero {
-    min-height: 360px;
-    background-position: center top;
+    width: 100%;
+    margin-left: 0;
+    transform: none;
   }
 
   .section-title {
@@ -484,10 +483,6 @@
 }
 
 @media (max-width: 480px) {
-  .solo-hero {
-    min-height: 320px;
-  }
-
   .whatsapp-floating-message {
     display: none;
   }

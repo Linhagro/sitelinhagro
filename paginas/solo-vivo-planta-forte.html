@@ -6,12 +6,10 @@
 
   <title>Solo Vivo, Planta Forte - Linhagro</title>
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/imagens/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/imagens/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/imagens/apple-touch-icon.png">
 
-  <!-- Fontes Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -19,44 +17,43 @@
     rel="stylesheet"
   >
 
-  <!-- Font Awesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
   >
 
-  <!-- CSS Global -->
   <link rel="stylesheet" href="../assets/css/reset.css">
   <link rel="stylesheet" href="../assets/css/variaveis.css">
   <link rel="stylesheet" href="../assets/css/componentes.css">
   <link rel="stylesheet" href="../assets/css/components/header.css">
   <link rel="stylesheet" href="../assets/css/components/footer.css">
 
-  <!-- CSS da Página -->
   <link rel="stylesheet" href="../assets/css/paginas/solo-vivo-planta-forte.css">
 </head>
 <body>
 
-  <!-- HEADER -->
   <div id="header-container"></div>
 
   <main class="solo-page">
 
-    <!-- FOLHAS GERAIS DE FUNDO (DISCRETAS) -->
     <div class="folha folha-bg-1"></div>
     <div class="folha folha-bg-2"></div>
 
-    <!-- HERO: faixa com imagem completa do Solo Vivo -->
     <section class="solo-hero">
-      <div class="solo-hero-overlay"></div>
+      <picture class="solo-hero-picture">
+        <img
+          src="../assets/imagens/solo vivo/logo-solo-vivo-planta-forte.png"
+          alt="Programa Solo Vivo, Planta Forte - Linhagro"
+          class="solo-hero-img"
+          loading="eager"
+        >
+      </picture>
     </section>
 
-    <!-- RESUMO DO PROGRAMA (somente texto) -->
     <section class="solo-summary">
       <div class="container">
         <div class="solo-summary-grid solo-summary-only-text">
           <div class="solo-summary-content">
-            <!-- folha ao lado do título/textos -->
             <div class="folha folha-summary-1"></div>
 
             <h1 class="solo-summary-title">Programa Solo Vivo, Planta Forte</h1>
@@ -80,10 +77,8 @@
       </div>
     </section>
 
-    <!-- PILARES -->
     <section class="solo-pillars" id="como-funciona">
       <div class="container solo-pillars-container">
-        <!-- folha na lateral do título -->
         <div class="folha folha-pillars-1"></div>
 
         <div class="section-header">
@@ -138,10 +133,8 @@
       </div>
     </section>
 
-    <!-- BENEFÍCIOS -->
     <section class="solo-benefits">
       <div class="container solo-benefits-container">
-        <!-- folha próxima dos textos de benefícios -->
         <div class="folha folha-benefits-1"></div>
 
         <div class="solo-benefits-grid">
@@ -189,10 +182,8 @@
       </div>
     </section>
 
-    <!-- CTA FINAL -->
     <section class="cta-section" id="contato">
       <div class="container cta-container">
-        <!-- folha discreta perto do CTA -->
         <div class="folha folha-cta-1"></div>
 
         <h2 class="cta-title">
@@ -215,10 +206,8 @@
 
   </main>
 
-  <!-- FOOTER -->
   <div id="footer-container"></div>
 
-  <!-- BOTÃO WHATSAPP FLUTUANTE COM BALÃO -->
   <div class="whatsapp-floating">
     <a
       href="https://wa.me/5527999806801?text=Ol%C3%A1!%20Quero%20falar%20sobre%20o%20programa%20Solo%20Vivo,%20Planta%20Forte."
@@ -234,7 +223,6 @@
     </div>
   </div>
 
-  <!-- SCRIPTS -->
   <script src="../assets/components-loader.js"></script>
   <script src="../assets/js/components/header.js"></script>
   <script src="../assets/js/paginas/solo-vivo-planta-forte.js"></script>

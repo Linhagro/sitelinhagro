@@ -8,10 +8,21 @@
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Hero */
+/* Container genérico da página (garante responsivo) */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ==========================================
+ * HERO
+ * ========================================== */
 
 .hero-page {
-  background: linear-gradient(135deg, #2D5016 0%, #4a7b2b 50%, #6f8f4a 100%);
+background: radial-gradient(circle at top, #2D5016 0%, #4a7b2b 40%, #2D5016 100%);
   padding: 6rem 2rem 4rem;
   text-align: center;
   color: white;
@@ -136,6 +147,7 @@
   border-radius: 16px;
   padding: 2.5rem 2.25rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
 }
 
 .form-header {
@@ -187,6 +199,8 @@
   color: #2c3e50;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .form-group textarea {
@@ -428,6 +442,8 @@
 
   .form-wrapper {
     padding: 2rem 1.75rem;
+    max-width: 100%;
+    width: 100%;
   }
 }
 
@@ -466,11 +482,17 @@
     max-width: 300px;
     justify-content: center;
   }
+
+  .form-section {
+    padding: 2.5rem 1rem 3rem;
+  }
 }
 
 @media (max-width: 480px) {
   .form-wrapper {
     padding: 1.7rem 1.25rem;
+    max-width: 100%;
+    width: 100%;
   }
 
   .section-title {
@@ -485,4 +507,11 @@
     max-width: 190px;
     font-size: 12px;
   }
+}
+
+/* Evita scroll horizontal no mobile por estouro de largura */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }

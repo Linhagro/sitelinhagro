@@ -2,7 +2,7 @@
 // TRABALHE CONOSCO - LINHAGRO
 // ============================================
 
-// Marca nav ativo (ajuste se tiver link específico no menu)
+// Marca nav ativo (usa texto do link "Trabalhe")
 function marcarNavAtivo() {
   const navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach(link => {
@@ -12,7 +12,7 @@ function marcarNavAtivo() {
   });
 }
 
-// Envio AJAX para Formspree
+// Envio AJAX para Formspree (mantém origem Linhagro via hidden)
 function setupFormTrabalhe() {
   const form = document.getElementById('trabalhe-form');
   const successBox = document.getElementById('form-sucesso');
@@ -35,6 +35,11 @@ function setupFormTrabalhe() {
 
     try {
       const formData = new FormData(form);
+
+      // garante origem Linhagro mesmo se hidden for removido no HTML
+      if (!formData.has('origem_sistema')) {
+        formData.append('origem_sistema', 'Trabalhe Conosco - Linhagro');
+      }
 
       const response = await fetch(form.action, {
         method: form.method || 'POST',

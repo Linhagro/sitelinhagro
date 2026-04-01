@@ -1,362 +1,744 @@
 /* ==========================================
- * PÁGINA QUEM SOMOS - TEMA LARANJA
+ * PÁGINA QUEM SOMOS - NOVO LAYOUT ANIMADO
  * ========================================== */
+
 
 .quem-somos-page {
   min-height: 100vh;
-  background-color: #f8f9fa;
+  background: #f8f9fa;
+  overflow-x: hidden;
 }
 
-/* Hero da Página */
+
+/* HERO */
+
+
 .hero-page {
-  background: linear-gradient(90deg, #ff9a3c 0%, #ff5500 100%);
-  padding: 7rem 2rem 4rem;
+  position: relative;
+  background: radial-gradient(circle at top, #ff5500 0%, #ff9a3c 40%, #ff5500 100%);
+  padding: 7rem 2rem 5rem;
   text-align: center;
-  color: white;
-  margin-bottom: 0;
+  color: #fff;
+  overflow: hidden;
 }
+
+
+.hero-page .container {
+  position: relative;
+  z-index: 2;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(10px);
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+
+.hero-orb-1 {
+  width: 280px;
+  height: 280px;
+  top: -60px;
+  left: -40px;
+  background: rgba(255, 255, 255, 0.38);
+  animation: floatOrb 7s ease-in-out infinite;
+}
+
+
+.hero-orb-2 {
+  width: 240px;
+  height: 240px;
+  bottom: -70px;
+  right: -30px;
+  background: rgba(255, 210, 170, 0.45);
+  animation: floatOrb 8s ease-in-out infinite reverse;
+}
+
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(10px);
+  font-size: 0.9rem;
+  font-weight: 600;
+  animation: pulseBadge 3s ease-in-out infinite;
+}
+
 
 .page-title {
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: 800;
   margin-bottom: 1rem;
   font-family: 'Montserrat', sans-serif;
 }
 
+
 .page-subtitle {
-  font-size: 1.25rem;
-  opacity: 0.95;
-  max-width: 600px;
+  max-width: 760px;
   margin: 0 auto;
-  white-space: nowrap;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  opacity: 0.96;
 }
 
-/* ==========================================
-   TIPOGRAFIA UNIFICADA
-   ========================================== */
 
-.section-title,
-.evolucao-titulo {
-  font-family: 'Montserrat', sans-serif;
+/* BASE */
+
+
+.section-tag {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  font-size: 2rem;
-  color: #2c3e50;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ff5500;
 }
 
-.historia-text .section-description,
-.evolucao-texto {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #5a6c7d;
+
+.section-tag-light {
+  color: #ffd5bd;
+}
+
+
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #2c3e50;
   margin-bottom: 1rem;
 }
 
-.historia-text .section-description strong,
-.evolucao-texto strong {
-  color: #F4A261;
-  font-weight: 600;
+
+.section-description,
+.section-subtitle {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #5a6c7d;
 }
 
-/* ==========================================
-   BLOCO 1 - NOSSA ORIGEM (TEXTO + IMAGEM)
-   ========================================== */
 
-.nossa-historia {
-  padding: 4rem 2rem;
-  background-color: white;
+.text-center {
+  text-align: center;
 }
 
-.nossa-historia .container {
+
+/* REVEAL */
+
+
+.reveal-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+
+.reveal-item.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* INTRO */
+
+
+.intro-section {
+  padding: 4.5rem 2rem;
+  background: #ffffff;
+}
+
+
+.intro-section .container {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.historia-content {
+
+.intro-grid {
   display: grid;
-  grid-template-columns: 3fr 4fr;
+  grid-template-columns: minmax(320px, 1fr) minmax(320px, 1.05fr);
   gap: 3rem;
   align-items: center;
 }
 
-.historia-image {
+
+.intro-text .section-description {
+  margin-bottom: 1rem;
+}
+
+
+.intro-image {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
 }
 
-.historia-image-wrapper {
+
+.intro-image-wrapper {
   width: 100%;
   max-width: 720px;
-  border-radius: 16px;
+  border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+  transform: translateZ(0);
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
 }
 
-.historia-foto {
+
+.intro-image-wrapper:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18);
+}
+
+
+.intro-foto {
   display: block;
   width: 100%;
   height: auto;
   object-fit: cover;
 }
 
-/* ==========================================
-   BLOCO 2 - LINHA DE EVOLUÇÃO (3 ETAPAS)
-   ========================================== */
 
-.visao-compromisso-section {
-  padding: 3.5rem 2rem 3.5rem;
-  background: #f3f5f7;
+/* MENSAGEM */
+
+
+.mensagem-section {
+  padding: 4.5rem 2rem;
+  background: linear-gradient(180deg, #fff7f1 0%, #f8f9fa 100%);
 }
 
-.visao-compromisso-section .container {
-  max-width: 900px;
-  margin: 0 auto;
-}
 
-.evolucao-etapa {
-  text-align: left;
-  padding: 0 0 2rem;
-}
-
-.evolucao-label {
-  display: inline-block;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #F4A261;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.evolucao-titulo {
-  margin-bottom: 0.75rem;
-}
-
-.evolucao-divisor {
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
-  margin: 0 0 2rem;
-}
-
-.lista-compromisso {
-  list-style: none;
-  padding: 0;
-  margin: 0.5rem 0 0.75rem;
-}
-
-.lista-compromisso li {
-  position: relative;
-  padding-left: 1.2rem;
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #5a6c7d;
-  margin-bottom: 0.5rem;
-}
-
-.lista-compromisso li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: #F4A261;
-  font-weight: 700;
-}
-
-/* ==========================================
-   MISSÃO, VISÃO E VALORES
-   ========================================== */
-
-.mvv-section {
-  padding: 4rem 2rem;
-  background-color: #f8f9fa;
-}
-
-.mvv-section .container {
+.mensagem-section .container {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.mvv-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+
+.mensagem-header {
+  max-width: 780px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
 }
 
-.mvv-card {
-  background: white;
-  border-radius: 12px;
-  padding: 2.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
+
+.mensagem-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
-.mvv-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+
+.mensagem-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 2rem;
+  border: 1px solid rgba(44, 62, 80, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
-.mvv-icon {
-  width: 80px;
-  height: 80px;
+
+.mensagem-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.09);
+  border-color: rgba(255, 85, 0, 0.18);
+}
+
+
+.mensagem-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ff9a3c 0%, #ff5500 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  transition: transform 0.35s ease;
+}
+
+
+.mensagem-card:hover .mensagem-icon {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+
+.mensagem-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+
+.mensagem-text {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: #5a6c7d;
+}
+
+
+/* NÚMEROS */
+
+
+.numeros-section {
+  padding: 4.5rem 2rem;
+  background: linear-gradient(135deg, #203040 0%, #2c3e50 100%);
+  color: #fff;
+}
+
+
+.numeros-section .container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+
+.numeros-header {
+  max-width: 760px;
+  margin: 0 auto 2.5rem;
+}
+
+
+.numeros-section .section-title {
+  color: #ffffff;
+}
+
+
+.numeros-section .section-subtitle {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+
+.numeros-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  gap: 1.25rem;
+}
+
+
+.numero-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  padding: 2rem 1.25rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease;
+}
+
+
+.numero-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+
+.numero-valor {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+}
+
+
+.numero-label {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+
+/* PRESENÇA */
+
+
+.presenca-section {
+  padding: 4.5rem 2rem 5rem;
+  background: #ffffff;
+}
+
+
+.presenca-section .container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+
+.presenca-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+
+.presenca-copy {
+  max-width: 560px;
+}
+
+
+.presenca-descricao {
+  max-width: 520px;
+}
+
+
+.filtros-wrapper {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+
+.filtro-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.2rem;
+  background: #f5f7f8;
+  border: 1px solid #dfe6ea;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2c3e50;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+
+.filtro-btn:hover {
+  background: #eef2f4;
+  transform: translateY(-2px);
+}
+
+
+.filtro-btn.active {
+  background: #ff5500;
+  border-color: #ff5500;
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(255, 85, 0, 0.22);
+}
+
+
+.presenca-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1.6fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+
+.mapa-box {
+  position: sticky;
+  top: 110px;
+}
+
+
+.mapa-container {
+  width: 100%;
+  height: 640px;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 2px solid #e7ecef;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+
+.mapa-container:hover {
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+}
+
+
+/* POPUP LEAFLET */
+
+
+.leaflet-popup-content-wrapper {
+  border-radius: 14px;
+  padding: 0;
+  overflow: hidden;
+}
+
+
+.popup-consultor {
+  padding: 1rem;
+  min-width: 240px;
+}
+
+
+.popup-nome {
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  color: #0d5940;
+  margin-bottom: 0.5rem;
+}
+
+
+.popup-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  color: #5a6c7d;
+}
+
+
+.popup-info span {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+
+.popup-info i {
+  color: #0d5940;
+  width: 16px;
+  margin-top: 0.15rem;
+}
+
+
+/* MARCADOR */
+
+
+.marker-filial {
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: visible !important;
+  animation: markerFloat 2.8s ease-in-out infinite;
+}
+
+
+.marker-filial img {
+  width: 50px !important;
+  height: 50px !important;
+  display: block !important;
+  object-fit: contain !important;
+}
+
+
+/* FILIAIS 1x4 */
+
+
+.filiais-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(205px, 1fr));
+  gap: 0.85rem;
+}
+
+
+.filial-card {
+  background: #f8fafb;
+  border: 1px solid #e7ecef;
+  border-radius: 18px;
+  padding: 1.15rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, opacity 0.3s ease;
+  min-width: 0;
+}
+
+
+.filial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.08);
+  border-color: rgba(255, 85, 0, 0.18);
+}
+
+
+.filial-card.oculta {
+  display: none;
+}
+
+
+.filial-topo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+
+.filial-badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.38rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(255, 85, 0, 0.1);
+  color: #ff5500;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+
+.filial-nome {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #2c3e50;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.35;
+}
+
+
+.filial-fantasia {
+  font-size: 0.84rem;
+  color: #7a8b96;
+  line-height: 1.45;
+}
+
+
+.filial-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+
+.filial-info .info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.84rem;
+  color: #5a6c7d;
+  line-height: 1.5;
+  min-width: 0;
+}
+
+
+.filial-info .info-item span {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+
+.filial-info .info-item i {
+  width: 16px;
+  color: #ff5500;
+  margin-top: 0.18rem;
+  flex-shrink: 0;
+}
+
+
+/* CTA */
+
+
+.cta-section {
+  padding: 0 2rem 5rem;
+  background: #ffffff;
+}
+
+
+.cta-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.cta-box {
+  background: linear-gradient(135deg, #ff9a3c 0%, #ff5500 100%);
+  border-radius: 26px;
+  padding: 3rem 2rem;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 18px 40px rgba(255, 85, 0, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+
+.cta-box::before {
+  content: '';
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  top: -80px;
+  right: -60px;
   border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  animation: floatOrb 8s ease-in-out infinite;
+}
+
+
+.cta-box::after {
+  content: '';
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  bottom: -50px;
+  left: -40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: floatOrb 7s ease-in-out infinite reverse;
+}
+
+
+.cta-box > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+.cta-icon {
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  color: white;
-  margin-bottom: 1rem;
+  animation: pulseSoft 3s ease-in-out infinite;
 }
 
-.mvv-icon-missao {
-  background: linear-gradient(135deg, #F4A261 0%, #E76F51 100%);
-}
-
-.mvv-icon-visao {
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-}
-
-.mvv-icon-valores {
-  background: linear-gradient(135deg, #E76F51 0%, #F4A261 100%);
-}
-
-.mvv-title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #2c3e50;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.mvv-text {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: #5a6c7d;
-}
-
-.mvv-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.mvv-list li {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1rem;
-  color: #2c3e50;
-}
-
-.mvv-list li i {
-  color: #F4A261;
-  font-size: 1rem;
-  flex-shrink: 0;
-}
-
-/* ==========================================
-   NÚMEROS
-   ========================================== */
-
-.numeros-section {
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-  color: white;
-  text-align: center;
-}
-
-.numeros-section .container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.numeros-section .section-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-  font-family: 'Montserrat', sans-serif;
-  color: #ffffff;
-}
-
-.numeros-section .section-subtitle {
-  font-size: 1.2rem;
-  opacity: 0.9;
-  margin-bottom: 3rem;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.numeros-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-}
-
-.numero-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  padding: 2rem 1rem;
-  transition: all 0.3s ease;
-}
-
-.numero-card:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-5px);
-}
-
-.numero-icon {
-  display: none;
-}
-
-.numero-valor {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 0.5rem;
-  font-family: 'Montserrat', sans-serif;
-  color: #ffffff;
-}
-
-.numero-label {
-  font-size: 1rem;
-  opacity: 0.9;
-  color: #ffffff;
-}
-
-/* ==========================================
-   CTA FINAL
-   ========================================== */
-
-.cta-section {
-  padding: 4rem 2rem;
-  background: linear-gradient(90deg, #ff9a3c 0%, #ff5500 100%);
-  text-align: center;
-  color: white;
-}
-
-.cta-section .container {
-  max-width: 900px;
-  margin: 0 auto;
-}
 
 .cta-title {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 800;
   margin-bottom: 1rem;
   font-family: 'Montserrat', sans-serif;
 }
 
+
 .cta-text {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+  max-width: 720px;
+  margin: 0 auto 1.8rem;
+  font-size: 1.08rem;
+  line-height: 1.7;
   opacity: 0.95;
 }
+
 
 .cta-buttons {
   display: flex;
@@ -365,43 +747,63 @@
   flex-wrap: wrap;
 }
 
+
 .btn-cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  font-weight: 600;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 700;
   font-size: 1rem;
   text-decoration: none;
   transition: all 0.3s ease;
+  min-width: 220px;
 }
+
 
 .btn-primary {
-  background-color: #25D366;
-  color: white;
+  background: #25D366;
+  color: #fff;
 }
+
 
 .btn-primary:hover {
-  background-color: #20ba5a;
+  background: #20ba5a;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 10px 24px rgba(37, 211, 102, 0.28);
 }
 
-/* ==========================================
- * BOTÃO WHATSAPP FLUTUANTE
- * ========================================== */
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+
+.btn-secondary:hover {
+  background: #ffffff;
+  color: #ff5500;
+  transform: translateY(-2px);
+}
+
+
+/* WHATSAPP FLOATING */
+
 
 .whatsapp-floating {
   position: fixed;
-  bottom: 20px;
   right: 20px;
+  bottom: 20px;
   z-index: 9999;
   display: flex;
   flex-direction: column-reverse;
   align-items: flex-end;
   gap: 6px;
 }
+
 
 .whatsapp-floating-button {
   display: flex;
@@ -416,13 +818,16 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   font-size: 28px;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  animation: pulseWhatsapp 2.6s ease-in-out infinite;
 }
+
 
 .whatsapp-floating-button:hover {
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
   background-color: #1ebe5b;
 }
+
 
 .whatsapp-floating-message {
   position: relative;
@@ -438,40 +843,17 @@
   border: 1px solid rgba(0, 0, 0, 0.03);
   text-align: left;
   word-break: break-word;
-
   opacity: 0;
   transform: translateY(10px);
   pointer-events: none;
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
+
 .whatsapp-floating-message span {
   display: block;
 }
 
-.whatsapp-floating-message::after {
-  content: '';
-  position: absolute;
-  right: 18px;
-  bottom: -6px;
-  width: 14px;
-  height: 14px;
-  background: linear-gradient(135deg, #f3e8ff 0%, #e0d4ff 100%);
-  border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
-}
-
-.whatsapp-floating-message::before {
-  content: '';
-  position: absolute;
-  right: 12px;
-  bottom: -18px;
-  width: 8px;
-  height: 8px;
-  background: linear-gradient(135deg, #f3e8ff 0%, #e0d4ff 100%);
-  border-radius: 50%;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
-}
 
 .whatsapp-floating-message.visible {
   opacity: 1;
@@ -479,70 +861,141 @@
   pointer-events: auto;
 }
 
-/* ==========================================
- * RESPONSIVE
- * ========================================== */
+
+/* ANIMAÇÕES */
+
+
+@keyframes floatOrb {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(16px) translateX(8px);
+  }
+}
+
+
+@keyframes pulseBadge {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 10px 24px rgba(255, 255, 255, 0.12);
+  }
+}
+
+
+@keyframes pulseSoft {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+
+@keyframes pulseWhatsapp {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+
+@keyframes markerFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+
+/* RESPONSIVO */
+
+
+@media (max-width: 1380px) {
+  .presenca-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .mapa-box {
+    position: static;
+  }
+
+  .mapa-container {
+    height: 460px;
+  }
+
+  .filiais-grid {
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+  }
+}
+
+
+@media (max-width: 900px) {
+  .mensagem-grid,
+  .numeros-grid,
+  .filiais-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+
+  .intro-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-image {
+    justify-content: flex-start;
+  }
+
+  .presenca-header {
+    align-items: flex-start;
+  }
+}
+
 
 @media (max-width: 768px) {
+  .hero-page {
+    padding: 6rem 1rem 4rem;
+  }
+
   .page-title {
-    font-size: 2rem;
+    font-size: 2.25rem;
   }
 
   .page-subtitle {
     font-size: 1rem;
-    white-space: normal;
   }
 
-  .nossa-historia {
-    padding: 3rem 1.5rem;
-  }
-
-  .historia-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .historia-image-wrapper {
-    max-width: 100%;
-  }
-
-  .historia-text .section-title {
-    font-size: 2rem;
-  }
-
-  .visao-compromisso-section {
-    padding: 3rem 1.5rem;
-  }
-
-  .mvv-section {
-    padding: 3rem 1.5rem;
-  }
-
-  .numeros-section {
-    padding: 3rem 1.5rem;
-  }
-
+  .intro-section,
+  .mensagem-section,
+  .numeros-section,
+  .presenca-section,
   .cta-section {
-    padding: 3rem 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
   }
 
   .cta-title {
-    font-size: 1.75rem;
+    font-size: 1.8rem;
   }
 
   .cta-text {
     font-size: 1rem;
   }
 
-  .cta-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .btn-cta {
-    width: 100%;
-    max-width: 300px;
-    justify-content: center;
+  .mapa-container {
+    height: 380px;
   }
 
   .whatsapp-floating {
@@ -562,36 +1015,66 @@
   }
 }
 
-@media (max-width: 480px) {
-  .hero-page {
-    padding: 3rem 1rem;
-  }
 
-  .nossa-historia {
-    padding: 3rem 1rem;
-  }
-
-  .visao-compromisso-section {
-    padding: 3rem 1rem;
-  }
-
-  .mvv-card {
-    padding: 2rem;
-  }
-
-  .numeros-section {
-    padding: 3rem 1rem;
-  }
-
+@media (max-width: 640px) {
+  .mensagem-grid,
+  .filiais-grid,
   .numeros-grid {
     grid-template-columns: 1fr;
   }
 
-  .cta-section {
-    padding: 3rem 1rem;
+  .mensagem-card,
+  .filial-card,
+  .numero-card {
+    padding: 1.4rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-cta {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .hero-page {
+    padding: 5.3rem 1rem 3.5rem;
+  }
+
+  .page-title {
+    font-size: 1.95rem;
+  }
+
+  .hero-badge {
+    font-size: 0.8rem;
+  }
+
+  .mapa-container {
+    height: 320px;
   }
 
   .whatsapp-floating-message {
     display: none;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
