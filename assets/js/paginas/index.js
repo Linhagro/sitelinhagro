@@ -4,10 +4,12 @@
  */
 
 
+
 document.addEventListener('componentsLoaded', () => {
   console.log('✅ Página Index carregada (hero slider 3 banners)');
   initIndexPage();
 });
+
 
 
 function initIndexPage() {
@@ -21,17 +23,22 @@ function initIndexPage() {
 }
 
 
+
 /**
  * HERO RESPONSIVO - TROCA DE ARQUIVO CONFORME O APARELHO
- * Em mobile usa a imagem tablet para ganhar mais definição visual.
+ * Em desktop prioriza imagem Full HD.
+ * Em tablet usa tablet.
+ * Em mobile usa tablet para manter melhor definição visual.
  */
 function applyResponsiveHeroImages() {
   const backgrounds = document.querySelectorAll('.hero-background');
   if (!backgrounds.length) return;
 
 
-  const mobileQuery = window.matchMedia('(max-width: 768px)');
-  const tabletQuery = window.matchMedia('(min-width: 769px) and (max-width: 1024px)');
+
+  const viewportWidth = window.innerWidth;
+  const pixelRatio = window.devicePixelRatio || 1;
+
 
 
   backgrounds.forEach((bg) => {
@@ -41,33 +48,56 @@ function applyResponsiveHeroImages() {
     let selected = desktop;
 
 
-    if (mobileQuery.matches) {
-      selected = tablet || mobile || desktop;
-    } else if (tabletQuery.matches) {
-      selected = tablet || desktop;
+
+    if (viewportWidth <= 768) {
+      selected = pixelRatio >= 2
+        ? (tablet || desktop || mobile)
+        : (mobile || tablet || desktop);
+    } else if (viewportWidth <= 1024) {
+      selected = pixelRatio >= 2
+        ? (desktop || tablet || mobile)
+        : (tablet || desktop || mobile);
     } else {
       selected = desktop || tablet || mobile;
     }
 
 
-    bg.style.backgroundImage = `url("${selected}")`;
+
+    if (selected) {
+      bg.style.backgroundImage = `url("${selected}")`;
+      bg.style.backgroundColor = 'transparent';
+      bg.style.backgroundSize = 'cover';
+      bg.style.backgroundPosition = 'center center';
+      bg.style.backgroundRepeat = 'no-repeat';
+    }
   });
+
 
 
   console.log('🖼️ Imagens do hero ajustadas para o aparelho atual');
 }
 
 
+
 function bindResponsiveHeroImages() {
-  const mobileQuery = window.matchMedia('(max-width: 768px)');
-  const tabletQuery = window.matchMedia('(min-width: 769px) and (max-width: 1024px)');
+  let resizeTimeout = null;
 
 
-  mobileQuery.addEventListener('change', applyResponsiveHeroImages);
-  tabletQuery.addEventListener('change', applyResponsiveHeroImages);
+
+  function handleResize() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      applyResponsiveHeroImages();
+    }, 150);
+  }
+
+
+
+  window.addEventListener('resize', handleResize);
   window.addEventListener('orientationchange', applyResponsiveHeroImages);
   window.addEventListener('load', applyResponsiveHeroImages);
 }
+
 
 
 /**
@@ -80,7 +110,9 @@ function initHeroSlider() {
   const nextBtn = document.querySelector('.hero-arrow-next');
 
 
+
   if (!slides.length) return;
+
 
 
   let currentIndex = 0;
@@ -89,10 +121,12 @@ function initHeroSlider() {
   let intervalId = null;
 
 
+
   function showSlide(index) {
     slides.forEach((slide, i) => {
       slide.classList.toggle('active', i === index);
     });
+
 
 
     dots.forEach((dot, i) => {
@@ -100,8 +134,10 @@ function initHeroSlider() {
     });
 
 
+
     currentIndex = index;
   }
+
 
 
   function nextSlide() {
@@ -110,16 +146,19 @@ function initHeroSlider() {
   }
 
 
+
   function prevSlide() {
     const prevIndex = (currentIndex - 1 + total) % total;
     showSlide(prevIndex);
   }
 
 
+
   function startAutoPlay() {
     stopAutoPlay();
     intervalId = setInterval(nextSlide, intervalTime);
   }
+
 
 
   function stopAutoPlay() {
@@ -130,12 +169,14 @@ function initHeroSlider() {
   }
 
 
+
   dots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
       showSlide(index);
       startAutoPlay();
     });
   });
+
 
 
   if (prevBtn) {
@@ -146,6 +187,7 @@ function initHeroSlider() {
   }
 
 
+
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
       nextSlide();
@@ -154,12 +196,15 @@ function initHeroSlider() {
   }
 
 
+
   showSlide(0);
   startAutoPlay();
 
 
+
   console.log('🎞️ Hero slider iniciado (3 slides + setas)');
 }
+
 
 
 /**
@@ -169,7 +214,9 @@ function initCounterAnimation() {
   const numeroElements = document.querySelectorAll('.numero-numero');
 
 
+
   if (!numeroElements.length) return;
+
 
 
   const observer = new IntersectionObserver((entries) => {
@@ -184,9 +231,11 @@ function initCounterAnimation() {
   });
 
 
+
   numeroElements.forEach(el => observer.observe(el));
   console.log('🔢 Animação de contagem configurada');
 }
+
 
 
 function animateCounter(element) {
@@ -197,8 +246,10 @@ function animateCounter(element) {
   let current = 0;
 
 
+
   const timer = setInterval(() => {
     current += increment;
+
 
 
     if (current >= targetValue) {
@@ -207,12 +258,15 @@ function animateCounter(element) {
     }
 
 
+
     let displayValue = Math.floor(current);
+
 
 
     if (displayValue >= 1000) {
       displayValue = displayValue.toLocaleString('pt-BR');
     }
+
 
 
     const label = element.nextElementSibling.textContent.toLowerCase();
@@ -227,6 +281,7 @@ function animateCounter(element) {
 }
 
 
+
 /**
  * SCROLL REVEAL
  */
@@ -234,7 +289,9 @@ function initScrollReveal() {
   const cards = document.querySelectorAll('.destaque-card, .area-card, .parceiro-item');
 
 
+
   if (!cards.length) return;
+
 
 
   const observer = new IntersectionObserver((entries) => {
@@ -252,6 +309,7 @@ function initScrollReveal() {
   });
 
 
+
   cards.forEach(card => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(30px)';
@@ -260,8 +318,10 @@ function initScrollReveal() {
   });
 
 
+
   console.log('✨ Scroll Reveal ativado');
 }
+
 
 
 /**
@@ -286,8 +346,10 @@ function initSmoothScroll() {
   });
 
 
+
   console.log('🧷 Smooth Scroll configurado');
 }
+
 
 
 /**
@@ -296,6 +358,7 @@ function initSmoothScroll() {
 function initFloatingWhatsappMessage() {
   const messageEl = document.querySelector('.whatsapp-floating-message');
   if (!messageEl) return;
+
 
 
   const mensagens = [
@@ -307,7 +370,9 @@ function initFloatingWhatsappMessage() {
   ];
 
 
+
   let idx = 0;
+
 
 
   function mostrarMensagem() {
@@ -315,8 +380,10 @@ function initFloatingWhatsappMessage() {
     if (!span) return;
 
 
+
     span.innerHTML = mensagens[idx];
     messageEl.classList.add('visible');
+
 
 
     setTimeout(() => {
@@ -324,16 +391,20 @@ function initFloatingWhatsappMessage() {
     }, 2500);
 
 
+
     idx = (idx + 1) % mensagens.length;
   }
+
 
 
   setTimeout(mostrarMensagem, 3000);
   setInterval(mostrarMensagem, 6000);
 
 
+
   console.log('💬 Balão do WhatsApp inicializado');
 }
+
 
 
 console.log('🚀 Index JS (hero slider 3 banners) carregado!');
