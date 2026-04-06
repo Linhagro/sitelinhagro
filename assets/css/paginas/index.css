@@ -2,9 +2,13 @@
  * INDEX - CSS FINAL (hero slider + seções + whatsapp flutuante)
  */
 
+
+
 /* ==========================================
    HEADER - ESCONDER AO ROLAR + OVERLAY VERDE
    =========================================== */
+
+
 
 .site-header {
   position: sticky;
@@ -19,11 +23,15 @@
   border-bottom: 1px solid transparent;
 }
 
+
+
 /* esconder ao rolar para baixo */
 .site-header.header-hidden {
   transform: translateY(-100%);
   box-shadow: none;
 }
+
+
 
 /* overlay VERDE ao passar do threshold de scroll (classe adicionada pelo JS) */
 .site-header.header-overlay {
@@ -32,9 +40,13 @@
   box-shadow: none;
 }
 
+
+
 /* ==========================================
    HERO (SLIDER COM 3 BANNERS)
    =========================================== */
+
+
 
 .hero {
   position: relative;
@@ -42,6 +54,8 @@
   overflow: hidden;
   background: #1a1a1a;
 }
+
+
 
 .hero-single {
   position: absolute;
@@ -55,10 +69,14 @@
   transition: opacity 0.7s ease;
 }
 
+
+
 .hero-single.active {
   opacity: 1;
   pointer-events: auto;
 }
+
+
 
 /* fundo */
 .hero-background {
@@ -71,52 +89,60 @@
   z-index: 0;
 }
 
+
+
 /* DESKTOP – imagens 1920x1080 */
 .hero-bg-1 {
   background-image: url('../../imagens/hero/desktop/hero-slide-1.jpg');
+  background-image: -webkit-image-set(
+    url('../../imagens/hero/desktop/hero-slide-1.jpg') 1x,
+    url('../../imagens/hero/desktop/hero-slide-1.jpg') 2x
+  );
+  background-image: image-set(
+    url('../../imagens/hero/desktop/hero-slide-1.jpg') 1x,
+    url('../../imagens/hero/desktop/hero-slide-1.jpg') 2x
+  );
   background-color: #0d5940;
 }
+
+
 
 .hero-bg-2 {
   background-image: url('../../imagens/hero/desktop/hero-slide-2.jpg');
+  background-image: -webkit-image-set(
+    url('../../imagens/hero/desktop/hero-slide-2.jpg') 1x,
+    url('../../imagens/hero/desktop/hero-slide-2.jpg') 2x
+  );
+  background-image: image-set(
+    url('../../imagens/hero/desktop/hero-slide-2.jpg') 1x,
+    url('../../imagens/hero/desktop/hero-slide-2.jpg') 2x
+  );
   background-color: #0d5940;
 }
+
+
 
 .hero-bg-3 {
   background-image: url('../../imagens/hero/desktop/hero-slide-3.jpg');
+  background-image: -webkit-image-set(
+    url('../../imagens/hero/desktop/hero-slide-3.jpg') 1x,
+    url('../../imagens/hero/desktop/hero-slide-3.jpg') 2x
+  );
+  background-image: image-set(
+    url('../../imagens/hero/desktop/hero-slide-3.jpg') 1x,
+    url('../../imagens/hero/desktop/hero-slide-3.jpg') 2x
+  );
   background-color: #0d5940;
 }
 
-/* TABLET */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .hero-bg-1 {
-    background-image: url('../../imagens/hero/tablet/hero-slide-1.jpg');
-  }
-  .hero-bg-2 {
-    background-image: url('../../imagens/hero/tablet/hero-slide-2.jpg');
-  }
-  .hero-bg-3 {
-    background-image: url('../../imagens/hero/tablet/hero-slide-3.jpg');
-  }
-}
 
-/* MOBILE */
-@media (max-width: 768px) {
-  .hero-bg-1 {
-    background-image: url('../../imagens/hero/mobile/hero-slide-1.jpg');
-  }
-  .hero-bg-2 {
-    background-image: url('../../imagens/hero/mobile/hero-slide-2.jpg');
-  }
-  .hero-bg-3 {
-    background-image: url('../../imagens/hero/mobile/hero-slide-3.jpg');
-  }
-}
 
 /* sem overlay escuro estrutural – se precisar, crie só um overlay leve */
 .hero-overlay {
   display: none;
 }
+
+
 
 .hero .container {
   position: relative;
@@ -126,11 +152,15 @@
   align-items: center;
 }
 
+
+
 .hero-content {
   max-width: 730px;
   color: var(--cor-branco);
   padding-top: 40px;
 }
+
+
 
 /* badge SEM blur/sombra “embaçada” */
 .hero-badge {
@@ -145,6 +175,8 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
+
+
 .hero-title {
   font-family: var(--fonte-titulos);
   font-size: 46px;
@@ -154,12 +186,16 @@
   color: var(--cor-branco);
 }
 
+
+
 .hero-highlight-laranja {
   background: linear-gradient(135deg, #FF5500 0%, #FF5500 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+
 
 /* cursor (se aparecer em algum lugar) */
 .hero-cursor {
@@ -173,10 +209,14 @@
   animation: blink-cursor 0.8s infinite;
 }
 
+
+
 @keyframes blink-cursor {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
 }
+
+
 
 .hero-subtitle {
   font-size: 17px;
@@ -186,11 +226,15 @@
   color: var(--cor-branco);
 }
 
+
+
 .hero-buttons {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
 }
+
+
 
 .btn-hero {
   display: inline-flex;
@@ -206,16 +250,22 @@
   white-space: nowrap;
 }
 
+
+
 .btn-hero-primary {
   background: linear-gradient(135deg, #FF5500 0%, #FF5500 100%);
   color: var(--cor-branco);
   box-shadow: 0 6px 20px rgba(255, 85, 0, 0.4);
 }
 
+
+
 .btn-hero-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 28px rgba(255, 85, 0, 0.5);
 }
+
+
 
 .btn-hero-secondary {
   background: rgba(255, 255, 255, 0.1);
@@ -224,10 +274,14 @@
   border-color: rgba(255, 255, 255, 0.3);
 }
 
+
+
 .btn-hero-secondary:hover {
   background: rgba(255, 255, 255, 0.2);
   border-color: var(--cor-branco);
 }
+
+
 
 /* DOTS DO SLIDER */
 .hero-dots {
@@ -240,6 +294,8 @@
   z-index: 3;
 }
 
+
+
 .hero-dot {
   width: 10px;
   height: 10px;
@@ -251,11 +307,15 @@
   transition: all 0.3s ease;
 }
 
+
+
 .hero-dot.active {
   background: #FF5500;
   border-color: #FF5500;
   width: 24px;
 }
+
+
 
 /* SETAS LATERAIS DO SLIDER */
 .hero-arrow {
@@ -276,17 +336,25 @@
   transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+
+
 .hero-arrow i {
   font-size: 18px;
 }
+
+
 
 .hero-arrow-prev {
   left: 24px;
 }
 
+
+
 .hero-arrow-next {
   right: 24px;
 }
+
+
 
 .hero-arrow:hover {
   background: rgba(0, 0, 0, 0.6);
@@ -294,15 +362,21 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 
+
+
 /* ==========================================
    NÚMEROS RÁPIDOS – TEXTO EM DEGRADÊ
    =========================================== */
+
+
 
 .numeros-rapidos {
   background: var(--cor-branco);
   border-bottom: 1px solid var(--cor-border);
   padding-bottom: 60px;
 }
+
+
 
 /* container sem fundo laranja */
 .faixa-resultados {
@@ -313,6 +387,8 @@
   text-align: center;
   background: transparent;
 }
+
+
 
 /* texto com degradê laranja */
 .faixa-resultados-titulo {
@@ -328,10 +404,14 @@
   color: transparent;
 }
 
+
+
 /* conteúdo numérico abaixo, dentro do container padrão */
 .numeros-rapidos .container {
   padding-top: 32px;
 }
+
+
 
 .numeros-grid {
   display: grid;
@@ -340,9 +420,13 @@
   text-align: center;
 }
 
+
+
 .numero-item {
   padding: var(--espacamento-md);
 }
+
+
 
 .numero-numero {
   font-family: var(--fonte-titulos);
@@ -352,20 +436,28 @@
   margin-bottom: 4px;
 }
 
+
+
 .numero-texto {
   font-size: 14px;
   color: var(--cor-cinza-escuro);
   font-weight: 500;
 }
 
+
+
 /* ==========================================
    SEÇÕES GERAIS
    =========================================== */
+
+
 
 .section-header {
   text-align: center;
   margin-bottom: 48px;
 }
+
+
 
 .section-tag {
   display: inline-block;
@@ -382,6 +474,8 @@
   margin-bottom: 12px;
 }
 
+
+
 .section-title {
   font-family: var(--fonte-titulos);
   font-size: 40px;
@@ -390,6 +484,8 @@
   margin-bottom: 12px;
 }
 
+
+
 .section-subtitle {
   font-size: 17px;
   color: var(--cor-cinza-escuro);
@@ -397,14 +493,20 @@
   margin: 0 auto;
 }
 
+
+
 /* ==========================================
    DESTAQUES / PILARES – FUNDO LARANJA
    =========================================== */
+
+
 
 .destaques {
   padding: 80px var(--espacamento-lg);
   background: linear-gradient(90deg, #ff9a3c 0%, #ff5500 100%);
 }
+
+
 
 /* textos da Metodologia em branco sobre o laranja */
 .destaques .section-title,
@@ -412,16 +514,22 @@
   color: #ffffff;
 }
 
+
+
 .destaques .section-tag {
   color: #ffffff;
   background: rgba(0, 0, 0, 0.18);
 }
+
+
 
 .destaques-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 32px;
 }
+
+
 
 .destaque-card {
   background: #ffffff;
@@ -431,11 +539,15 @@
   transition: all 0.3s ease;
 }
 
+
+
 .destaque-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
   border-color: #FF5500;
 }
+
+
 
 .destaque-icon {
   width: 64px;
@@ -450,21 +562,31 @@
   transition: all 0.3s ease;
 }
 
+
+
 .destaque-card:hover .destaque-icon {
   transform: scale(1.1) rotate(-5deg);
 }
+
+
 
 .destaque-icon-verde {
   background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
 }
 
+
+
 .destaque-icon-laranja {
   background: linear-gradient(135deg, #FF5500 0%, #FF5500 100%);
 }
 
+
+
 .destaque-icon-azul {
   background: linear-gradient(135deg, #2196F3 0%, #42A5F5 100%);
 }
+
+
 
 .destaque-title {
   font-family: var(--fonte-titulos);
@@ -474,12 +596,16 @@
   margin-bottom: 12px;
 }
 
+
+
 .destaque-text {
   color: var(--cor-cinza-escuro);
   line-height: 1.6;
   margin-bottom: 16px;
   font-size: 15px;
 }
+
+
 
 /* botão/link Fale com um consultor em verde */
 .destaque-link {
@@ -496,23 +622,33 @@
   transition: all 0.3s ease;
 }
 
+
+
 .destaque-link i {
   font-size: 14px;
 }
+
+
 
 .destaque-link:hover {
   gap: 10px;
   background: #43a047;
 }
 
+
+
 /* ==========================================
    ECOSSISTEMA / EXPLORE ÁREAS – CARDS LARANJA
    =========================================== */
+
+
 
 .explore-areas {
   padding: 80px var(--espacamento-lg);
   background: var(--cor-branco);
 }
+
+
 
 /* título e subtítulo com destaque em laranja */
 .explore-areas .section-tag {
@@ -524,13 +660,19 @@
   color: #FF5500;
 }
 
+
+
 .explore-areas .section-title {
   color: #1f3b2b;
 }
 
+
+
 .explore-areas .section-subtitle {
   color: var(--cor-cinza-escuro);
 }
+
+
 
 /* grid de cards */
 .areas-grid {
@@ -538,6 +680,8 @@
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
 }
+
+
 
 /* cards com fundo laranja em degradê */
 .area-card {
@@ -551,10 +695,14 @@
   color: #ffffff;
 }
 
+
+
 .area-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 10px 32px rgba(0, 0, 0, 0.2);
 }
+
+
 
 /* ícones sobre o card laranja */
 .area-icon {
@@ -571,9 +719,13 @@
   color: #ffffff;
 }
 
+
+
 .area-card:hover .area-icon {
   transform: scale(1.1);
 }
+
+
 
 /* classes de cor mantidas, mas com mesmo estilo base */
 .area-icon-laranja,
@@ -586,6 +738,8 @@
   color: #ffffff;
 }
 
+
+
 .area-title {
   font-family: var(--fonte-titulos);
   font-size: 18px;
@@ -594,6 +748,8 @@
   margin-bottom: 8px;
 }
 
+
+
 .area-descricao {
   font-size: 14px;
   color: #fff7ec;
@@ -601,19 +757,27 @@
   margin-bottom: 12px;
 }
 
+
+
 .area-arrow {
   color: #ffffff;
   font-size: 16px;
   transition: all 0.3s ease;
 }
 
+
+
 .area-card:hover .area-arrow {
   transform: translateX(5px);
 }
 
+
+
 /* ==========================================
    PARCEIROS – CARROSSEL INFINITO
    =========================================== */
+
+
 
 .parceiros {
   padding: 60px 0;
@@ -621,13 +785,19 @@
   overflow: hidden;
 }
 
+
+
 .parceiros .container {
   max-width: 100%;
 }
 
+
+
 .parceiros .section-header {
   padding: 0 var(--espacamento-lg);
 }
+
+
 
 .parceiros-carousel {
   position: relative;
@@ -637,20 +807,28 @@
   margin-top: 20px;
 }
 
+
+
 .parceiros-track {
   display: flex;
   gap: 32px;
   animation: scrollInfinito 20s linear infinite;
 }
 
+
+
 @keyframes scrollInfinito {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-33.3333%); }
 }
 
+
+
 .parceiros-track:hover {
   animation-play-state: paused;
 }
+
+
 
 .parceiro-item {
   flex-shrink: 0;
@@ -666,6 +844,8 @@
   transition: all 0.3s ease;
 }
 
+
+
 .parceiro-logo {
   max-height: 60px;
   max-width: 140px;
@@ -675,11 +855,15 @@
   transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
 }
 
+
+
 .parceiro-item:hover {
   border-color: #FF5500;
   transform: scale(1.05);
   box-shadow: 0 6px 20px rgba(255, 85, 0, 0.2);
 }
+
+
 
 .parceiro-item:hover .parceiro-logo {
   filter: grayscale(0%);
@@ -687,9 +871,13 @@
   transform: scale(1.22) translateY(-3px);
 }
 
+
+
 /* ==========================================
    BOTÃO WHATSAPP FLUTUANTE + NUVEM 3 BOLHAS
    =========================================== */
+
+
 
 .whatsapp-floating {
   position: fixed;
@@ -701,6 +889,8 @@
   align-items: flex-end;
   gap: 6px;
 }
+
+
 
 /* Botão redondo */
 .whatsapp-floating-button {
@@ -718,11 +908,15 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
+
+
 .whatsapp-floating-button:hover {
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
   background-color: #1ebe5b;
 }
+
+
 
 /* Bolha maior com a mensagem */
 .whatsapp-floating-message {
@@ -745,9 +939,13 @@
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
+
+
 .whatsapp-floating-message span {
   display: block;
 }
+
+
 
 /* bolha média – encostada na nuvem, lado do botão */
 .whatsapp-floating-message::after {
@@ -762,6 +960,8 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
 }
 
+
+
 /* bolha pequena – mais perto do botão, abaixo da média */
 .whatsapp-floating-message::before {
   content: '';
@@ -775,97 +975,241 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
 }
 
+
+
 .whatsapp-floating-message.visible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
+
+
 /* ==========================================
    RESPONSIVIDADE
    =========================================== */
+
+
 
 @media (max-width: 1024px) {
   .hero {
     min-height: 88vh;
   }
 
+
+
   .hero-single {
     min-height: 88vh;
   }
 
+
+
+  .hero-bg-1 {
+    background-image: url('../../imagens/hero/tablet/hero-slide-1.jpg');
+    background-image: -webkit-image-set(
+      url('../../imagens/hero/tablet/hero-slide-1.jpg') 1x,
+      url('../../imagens/hero/desktop/hero-slide-1.jpg') 2x
+    );
+    background-image: image-set(
+      url('../../imagens/hero/tablet/hero-slide-1.jpg') 1x,
+      url('../../imagens/hero/desktop/hero-slide-1.jpg') 2x
+    );
+  }
+
+
+
+  .hero-bg-2 {
+    background-image: url('../../imagens/hero/tablet/hero-slide-2.jpg');
+    background-image: -webkit-image-set(
+      url('../../imagens/hero/tablet/hero-slide-2.jpg') 1x,
+      url('../../imagens/hero/desktop/hero-slide-2.jpg') 2x
+    );
+    background-image: image-set(
+      url('../../imagens/hero/tablet/hero-slide-2.jpg') 1x,
+      url('../../imagens/hero/desktop/hero-slide-2.jpg') 2x
+    );
+  }
+
+
+
+  .hero-bg-3 {
+    background-image: url('../../imagens/hero/tablet/hero-slide-3.jpg');
+    background-image: -webkit-image-set(
+      url('../../imagens/hero/tablet/hero-slide-3.jpg') 1x,
+      url('../../imagens/hero/desktop/hero-slide-3.jpg') 2x
+    );
+    background-image: image-set(
+      url('../../imagens/hero/tablet/hero-slide-3.jpg') 1x,
+      url('../../imagens/hero/desktop/hero-slide-3.jpg') 2x
+    );
+  }
+
+
+
   .hero-title {
     font-size: 40px;
   }
+
+
 
   .section-title {
     font-size: 32px;
   }
 }
 
+
+
 @media (max-width: 768px) {
   .hero {
     min-height: 78vh;
+    padding-top: 72px;
   }
+
+
 
   .hero-single {
     min-height: 78vh;
   }
 
+
+
+  .hero-background {
+    top: 72px;
+    bottom: 0;
+    height: auto;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+
+
+
+  .hero-bg-1 {
+    background-image: url('../../imagens/hero/mobile/hero-slide-1.jpg');
+    background-image: -webkit-image-set(
+      url('../../imagens/hero/mobile/hero-slide-1.jpg') 1x,
+      url('../../imagens/hero/tablet/hero-slide-1.jpg') 2x
+    );
+    background-image: image-set(
+      url('../../imagens/hero/mobile/hero-slide-1.jpg') 1x,
+      url('../../imagens/hero/tablet/hero-slide-1.jpg') 2x
+    );
+  }
+
+
+
+  .hero-bg-2 {
+    background-image: url('../../imagens/hero/mobile/hero-slide-2.jpg');
+    background-image: -webkit-image-set(
+      url('../../imagens/hero/mobile/hero-slide-2.jpg') 1x,
+      url('../../imagens/hero/tablet/hero-slide-2.jpg') 2x
+    );
+    background-image: image-set(
+      url('../../imagens/hero/mobile/hero-slide-2.jpg') 1x,
+      url('../../imagens/hero/tablet/hero-slide-2.jpg') 2x
+    );
+  }
+
+
+
+  .hero-bg-3 {
+    background-image: url('../../imagens/hero/mobile/hero-slide-3.jpg');
+    background-image: -webkit-image-set(
+      url('../../imagens/hero/mobile/hero-slide-3.jpg') 1x,
+      url('../../imagens/hero/tablet/hero-slide-3.jpg') 2x
+    );
+    background-image: image-set(
+      url('../../imagens/hero/mobile/hero-slide-3.jpg') 1x,
+      url('../../imagens/hero/tablet/hero-slide-3.jpg') 2x
+    );
+  }
+
+
+
+  .hero .container {
+    align-items: flex-start;
+  }
+
+
+
   .hero-content {
     padding-top: 20px;
   }
+
+
 
   .hero-title {
     font-size: 30px;
     margin-bottom: 16px;
   }
 
+
+
   .hero-subtitle {
     font-size: 15px;
     margin-bottom: 24px;
   }
+
+
 
   .hero-badge {
     font-size: 12px;
     padding: 5px 14px;
   }
 
+
+
   .hero-buttons {
     flex-direction: column;
     gap: 10px;
   }
+
+
 
   .btn-hero {
     width: 100%;
     justify-content: center;
   }
 
+
+
   .faixa-resultados {
     padding: 20px 12px;
   }
 
+
+
   .faixa-resultados-titulo {
     font-size: 20px;
   }
+
+
 
   .numeros-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
 
+
+
   .numero-numero {
     font-size: 28px;
   }
+
+
 
   .section-title {
     font-size: 28px;
   }
 
+
+
   .destaques,
   .explore-areas {
     padding: 60px var(--espacamento-lg);
   }
+
+
 
   .destaques-grid,
   .areas-grid {
@@ -873,28 +1217,40 @@
     gap: 20px;
   }
 
+
+
   .hero-arrow {
     width: 38px;
     height: 38px;
   }
 
+
+
   .hero-arrow-prev {
     left: 12px;
   }
 
+
+
   .hero-arrow-next {
     right: 12px;
   }
+
+
 
   .parceiro-item {
     width: 130px;
     height: 75px;
   }
 
+
+
   .whatsapp-floating {
     bottom: 16px;
     right: 16px;
   }
+
+
 
   .whatsapp-floating-button {
     width: 52px;
@@ -902,20 +1258,46 @@
     font-size: 26px;
   }
 
+
+
   .whatsapp-floating-message {
     max-width: 190px;
     font-size: 12px;
   }
 }
 
+
+
 @media (max-width: 480px) {
+  .hero {
+    min-height: 50vh;
+  }
+
+
+
+  .hero-single {
+    min-height: 50vh;
+  }
+
+
+
+  .hero-background {
+    background-position: center top;
+  }
+
+
+
   .hero-title {
     font-size: 26px;
   }
 
+
+
   .numeros-grid {
     grid-template-columns: 1fr;
   }
+
+
 
   .whatsapp-floating-message {
     display: none;
